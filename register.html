@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <br>
+    <div class="contact-container">
+  <h2>Register</h2>
+  <form>
+    <label for="surname">Surname</label>
+    <input   style="border: #00d4ff  solid 2px; color: black;"  type="text" id="surname" name="surname" placeholder="Enter your surname" required>
+
+    <label for="firstname">First Name</label>
+    <input   style="border: #00d4ff  solid 2px; color: black;"  type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
+
+    <label for="othername">Other Name</label>
+    <input   style="border: #00d4ff  solid 2px; color: black;"  type="text" id="othername" name="othername" placeholder="Enter your other name">
+
+    <label for="residential_address">Residential Address</label>
+    <textarea   style="border: #00d4ff  solid 2px; color: black;" id="residential_address" name="residential_address" placeholder="Enter your residential address" required></textarea>
+
+    <label for="permanent_address">Permanent Address</label>
+    <textarea   style="border: #00d4ff  solid 2px; color: black;" id="permanent_address" name="permanent_address" placeholder="Enter your permanent address" required></textarea>
+
+    <label for="email">Email</label>
+    <input   style="border: #00d4ff  solid 2px; color: black;" type="email" id="email" name="email" placeholder="Enter your email" required>
+
+    <label for="program">Program</label>
+    <input   style="border: #00d4ff  solid 2px; color: black;"  type="text" id="program" name="program" placeholder="Enter your program" required>
+
+    <label for="years_of_program">Years of Program</label>
+    <input   style="border: #00d4ff  solid 2px; color: black;"  type="number" id="years_of_program" name="years_of_program" placeholder="Enter years of program" required>
+
+    <h3>Sponsor Information</h3>
+    <label for="sponsor_full_name">Sponsor Full Name</label>
+    <input   style="border: #00d4ff  solid 2px; color: black;"  type="text" id="sponsor_full_name" name="sponsor_full_name" placeholder="Enter sponsor full name" required>
+
+    <label for="sponsor_contact_address">Sponsor Contact Address</label>
+    <textarea   style="border: #00d4ff  solid 2px; color: black;" id="sponsor_contact_address" name="sponsor_contact_address" placeholder="Enter sponsor contact address" required></textarea>
+
+    <label for="sponsor_relationship">Relationship</label>
+    <input   style="border: #00d4ff  solid 2px; color: black;"  type="text" id="sponsor_relationship" name="sponsor_relationship" placeholder="Enter relationship" required>
+
+    <label for="sponsor_occupation">Occupation</label>
+    <input   style="border: #00d4ff  solid 2px; color: black;"  type="text" id="sponsor_occupation" name="sponsor_occupation" placeholder="Enter occupation" required>
+
+    <label for="terms">
+      <input type="checkbox" id="terms" name="terms" required>  I am liable to any damages misconnect or fraud committed to the system by said user 
+    </label>
+
+    <button type="submit">Register</button>
+    <button type="button" onclick="window.location.href='login.html'" style="background: #28a745; margin-top: 10px;">Already Registered? Login</button>
+  </form>
+</div>
+
+<script>
+  document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting
+
+    // Collect all form data
+    const formData = new FormData(this);
+    const data = {};
+    for (let [key, value] of formData.entries()) {
+      data[key] = value;
+    } 
+    // Store in localStorage
+    localStorage.setItem('registerData', JSON.stringify(data)); 
+    alert('Registration  succesfull');
+    window.location="dashboard.html"
+  });
+</script>
+</body>
+</html>

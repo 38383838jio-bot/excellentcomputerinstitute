@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./font/fontawesome-free-7.1.0-web/fontawesome-free-7.1.0-web/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin:  auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .user-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .user-card h2 {
+            margin-top: 0;
+            color: #00d4ff;
+        }
+        .user-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+        .value {
+            color: #333;
+        }
+        .no-data {
+            text-align: center;
+            color: #777;
+            font-size: 18px;
+            padding: 50px;
+        }
+        .sponsor-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #00d4ff;
+        }
+        .sponsor-section h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1><i class="fas fa-tachometer-alt"></i> Registration Dashboard</h1>
+        <button id="logoutBtn" style="float: right; padding: 10px 20px; background: #ff4d4d; color: white; border: none; border-radius: 4px; cursor: pointer;">Logout</button>
+        <button id="logoutBtn" style="float: right; padding: 10px 20px; background: green; color: white; border: none; border-radius: 4px; cursor: pointer;">Start quiz</button>
+        <div id="userData"></div>
+    </div>
+
+     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userDataDiv = document.getElementById('userData');
+            const storedData = localStorage.getItem('registerData');
+
+            if (storedData) {
+                const data = JSON.parse(storedData);
+
+                const card = document.createElement('div');
+                card.className = 'user-card';
+
+                card.innerHTML = `
+                    <h2><i class="fas fa-user"></i> ${data.firstname} ${data.surname}</h2>
+                    <div class="user-info">
+                        <div class="info-item">
+                            <span class="label">First Name:</span>
+                            <span class="value">${data.firstname || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Surname:</span>
+                            <span class="value">${data.surname || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Other Name:</span>
+                            <span class="value">${data.othername || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Email:</span>
+                            <span class="value">${data.email || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Residential Address:</span>
+                            <span class="value">${data.residential_address || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Permanent Address:</span>
+                            <span class="value">${data.permanent_address || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Program:</span>
+                            <span class="value">${data.program || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Years of Program:</span>
+                            <span class="value">${data.years_of_program || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Terms Accepted:</span>
+                            <span class="value">${data.terms ? 'Yes' : 'No'}</span>
+                        </div>
+                    </div>
+                    <div class="sponsor-section">
+                        <h3><i class="fas fa-user-friends"></i> Sponsor Information</h3>
+                        <div class="user-info">
+                            <div class="info-item">
+                                <span class="label">Full Name:</span>
+                                <span class="value">${data.sponsor_full_name || 'N/A'}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Contact Address:</span>
+                                <span class="value">${data.sponsor_contact_address || 'N/A'}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Relationship:</span>
+                                <span class="value">${data.sponsor_relationship || 'N/A'}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Occupation:</span>
+                                <span class="value">${data.sponsor_occupation || 'N/A'}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                userDataDiv.appendChild(card);
+
+                document.getElementById('logoutBtn').addEventListener('click', function() { 
+                    window.location.href = 'index.html';
+                });
+            } else {
+                window.location.href = 'register.html';
+            }
+        });
+    </script>
+</body>
+</html>
