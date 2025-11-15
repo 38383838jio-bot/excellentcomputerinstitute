@@ -129,16 +129,35 @@
     </style>
 </head>
 <body style="font-size: 10px;">
-    <div class="dashboard-container">
-        <h1><i class="fas fa-tachometer-alt"></i> Registration Dashboard</h1>
-        <button id="logoutBtn" style="float: right; padding: 10px 20px; background: #ff4d4d; color: white; border: none; border-radius: 4px; cursor: pointer;">Logout</button>
+      <button id="logoutBtn" style="float: right; padding: 10px 20px; background: #ff4d4d; color: white; border: none; border-radius: 4px; cursor: pointer;">Logout</button>
+        <button id="logoutBtn" style="float: right; padding: 10px 20px; background: green; color: white; border: none; border-radius: 4px; cursor: pointer;">Our post</button>
         <button id="startQuizBtn" style="float: right; margin-right: 10px; padding: 10px 20px; background: green; color: white; border: none; border-radius: 4px; cursor: pointer;">Start quiz</button>
+        <button id="co" style="float: right; margin-right: 10px; padding: 10px 20px; background: green; color: white; border: none; border-radius: 4px; cursor: pointer;">Our Courses</button>
+    <div class="dashboard-container"> 
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      
         <div id="userData"></div>
     </div> 
     <script>
+            const co = document.getElementById("co").addEventListener('click',()=>{
+                
+                window.location.href = './ourcourser.html';
+            })
+    </script>
+    <script>
+        
         document.addEventListener('DOMContentLoaded', function() {
+            
             const userDataDiv = document.getElementById('userData');
             const storedData = localStorage.getItem('registerData'); 
+        
             if (storedData) {
                 const data = JSON.parse(storedData);
 
@@ -216,7 +235,7 @@
 
                 document.getElementById('startQuizBtn').addEventListener('click', function() {
                     // Add start quiz functionality here
-                    alert('Starting quiz...');
+                window.location.href = 'quiz.html';
                 });
             } else {
                 window.location.href = 'register.html';
