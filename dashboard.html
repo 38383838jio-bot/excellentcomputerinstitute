@@ -209,8 +209,7 @@
         document.addEventListener('DOMContentLoaded', function() {
 
             const userDataDiv = document.getElementById('userData');
-            const storedData = localStorage.getItem('registerData');
-
+            const storedData = localStorage.getItem('registerData'); 
             if (storedData) {
                 const data = JSON.parse(storedData);
 
