@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+</head>
+<body>
+    <div id="mee" style="text-align: center; color: green; font-size: 40px;display: none;">
+        <b>
+            Correct 1 point added
+        </b>
+    </div>
+    <br>
+        <div id="fals" style="text-align: center; color: rgb(255, 0, 0); font-size: 40px; display: none;">
+        <b>
+            You fails
+        </b>
+    </div>
+    <div id="me2" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+        <h1>1. A computer is best defined as: 
+</h1>
+<b>
+    a. An electronic device that stores and processes data
+    <br>
+    b. A machine that cooks food
+    <br>
+c. A device for playing music
+<br>
+d. None of the above
+</b>
+<br>
+<br>
+<div style="width: 60%; margin: auto;">
+    <button id="me1" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
+        Insert your answere 
+    </button>
+</div>
+    </div>
+    <br>
+<div style="text-align: center;">
+    Total  points 1/100
+</div>
+    <script>
+        const me1 = document.getElementById("me1");
+        const me2 = document.getElementById("me2");
+        const fals = document.getElementById("fals");
+        const me4 = document.getElementById("mee");
+           me1.addEventListener("click", function() {
+            
+        const answere = "a";
+        const userAnswere = prompt("Insert your answere");
+        if (userAnswere === answere) {
+            alert("Correct");
+            me2.style.backgroundColor="green";  
+            fals.style.display="none";
+            me4.style.display="block"; 
+        } else {  
+            fals.style.display="block";
+            me4.style.display="none"; 
+            me2.style.backgroundColor="red"; 
+        }
+           });
+    </script>
+</body>
+</html  >
