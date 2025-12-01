@@ -55,6 +55,9 @@
     <button type="submit">Register</button>
     <button type="button" onclick="window.location.href='login.html'" style="background: #28a745; margin-top: 10px;">Already Registered? Login</button>
   </form>
+  <div id="successMessage" style="display: none; margin-top: 20px; padding: 15px; background-color: #28a745; color: white; border-radius: 5px; text-align: center; font-weight: bold;">
+    Registration successful! Redirecting to dashboard...
+  </div>
 </div> 
 <script>
   document.querySelector('form').addEventListener('submit', function(event) {
@@ -68,9 +71,16 @@
       data[key] = value;
     } 
     // Store in localStorage
-    localStorage.setItem('registerData', JSON.stringify(data)); 
-    alert('Registration  succesfull');
-    window.location="dashboard.html"
+    localStorage.setItem('registerData', JSON.stringify(data));
+    
+    // Show success message
+    const successMessage = document.getElementById('successMessage');
+    successMessage.style.display = 'block';
+    
+    // Redirect after 2 seconds
+    setTimeout(function() {
+      window.location = "dashboard.html";
+    }, 2000);
   });
 </script>
 </body>

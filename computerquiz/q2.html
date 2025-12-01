@@ -18,16 +18,18 @@
         </b>
     </div>
     <div id="me2" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
-        <h1>1. A computer is best defined as: 
+        <h1>
+2. The physical parts of a computer are called:
 </h1>
-<b>
-    a. An electronic device that stores and processes data
-    <br>
-    b. A machine that cooks food
-    <br>
-c. A device for playing music
+<b> 
+A. Software
 <br>
-d. None of the above
+B. Hardware
+<br>
+C. Memory
+<br>
+D. Data
+
 </b>
 <br>
 <br>
@@ -52,10 +54,7 @@ d. None of the above
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-        "
-        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"
-        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';"
-        onclick="window.location.href='q2.html'">
+        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"  onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';"  onclick="window.location.href='q2.html'">
             Next Question →
         </button>
     </div>
@@ -99,7 +98,7 @@ d. None of the above
 
         me1.addEventListener("click", function() {
 
-        const answere = "a";
+        const answere = "b";
         const userAnswere = prompt("Insert your answere");
         if (userAnswere === answere) {
             // Increment points only if meOne is false AND user hasn't failed before
