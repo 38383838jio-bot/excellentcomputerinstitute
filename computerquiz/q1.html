@@ -7,26 +7,24 @@
 </head>
 <body>
     <div id="q1-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
-        <h1>1. A computer is best defined as: 
-</h1>
-<b>
-    a. An electronic device that stores and processes data
-    <br>
-    b. A machine that cooks food
-    <br>
-c. A device for playing music
-<br>
-d. None of the above
-</b>
-<br>
-<br>
-<div style="width: 60%; margin: auto;">
-    <button id="q1-answer-btn" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
-        Insert your answere
-    </button>
-</div>
+        <h1>1. A computer is best defined as:</h1>
+        <b>
+            a. An electronic device that stores and processes data<br>
+            b. A machine that cooks food<br>
+            c. A device for playing music<br>
+            d. None of the above
+        </b>
+        <br><br>
+
+        <div style="width: 60%; margin: auto;">
+            <button id="q1-answer-btn" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
+                Insert your answer
+            </button>
+        </div>
     </div>
+
     <br>
+
     <div style="text-align: center;">
         <button id="q1-next-btn" style="
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -40,65 +38,54 @@ d. None of the above
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        "
-        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"
-        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';"
-        onclick="window.location.href='q2.html'">
+            letter-spacing: 1px;"
+            onclick="window.location.href='q2.html'">
             Next Question →
         </button>
     </div>
-    
+
     <br>
+
     <script>
-        // Initialize points object in localStorage
-        let pointsObj = localStorage.getItem('quizPoints');
-        if (!pointsObj) {
-            pointsObj = { total: 0 };
-            localStorage.setItem('quizPoints', JSON.stringify(pointsObj));
-        } else {
-            pointsObj = JSON.parse(pointsObj);
+        // Initialize points if not existing
+        if (!localStorage.getItem("points")) {
+            localStorage.setItem("points", "0");
         }
 
-        // Initialize meOne flag in localStorage
-        let meOne = localStorage.getItem('meOne');
-        if (!meOne) {
-            meOne = false;
-            localStorage.setItem('meOne', JSON.stringify(meOne));
-        } else {
-            meOne = JSON.parse(meOne);
-        }
-
-        // Initialize failed attempt flag in localStorage
-        let hasFailed = localStorage.getItem('hasFailed');
-        if (!hasFailed) {
-            hasFailed = false;
-            localStorage.setItem('hasFailed', JSON.stringify(hasFailed));
-        } else {
-            hasFailed = JSON.parse(hasFailed);
+        // Initialize answered questions storage
+        if (!localStorage.getItem("answered")) {
+            localStorage.setItem("answered", JSON.stringify({}));
         }
 
         const answerBtn = document.getElementById("q1-answer-btn");
 
-        answerBtn.addEventListener("click", function() {
+        answerBtn.addEventListener("click", function () {
 
-        const answere = "a";
-        const userAnswere = prompt("Insert your answere");
-        if (userAnswere === answere) {
-            // Increment points only if meOne is false AND user hasn't failed before
-            if (!meOne && !hasFailed) {
-                pointsObj.total += 1;
-                localStorage.setItem('quizPoints', JSON.stringify(pointsObj));
+            const correctAnswer = "a";
+            const userAnswer = prompt("Insert your answer");
+            const answered = JSON.parse(localStorage.getItem("answered"));
+
+            // Prevent double scoring
+            if (answered["q1"]) {
+                alert("You already answered this question. No points added.");
+                return;
             }
-            // Set meOne to true and add to localStorage
-            meOne = true;
-            localStorage.setItem('meOne', JSON.stringify(meOne));
-        } else {
-            // Mark as failed - no points can be earned anymore for this question
-            hasFailed = true;
-            localStorage.setItem('hasFailed', JSON.stringify(hasFailed));
-        }
-           });
+
+            if (userAnswer === correctAnswer) {
+
+                // Mark as answered
+                answered["q1"] = true;
+                localStorage.setItem("answered", JSON.stringify(answered));
+
+                // Add 1 point
+                let points = parseInt(localStorage.getItem("points"), 10);
+                points += 1;
+                localStorage.setItem("points", points.toString()); 
+
+            } else { 
+            }
+        });
     </script>
+
 </body>
 </html>

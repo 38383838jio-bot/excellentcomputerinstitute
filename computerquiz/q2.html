@@ -3,32 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
+    <title>Q2</title> 
 </head>
 <body>
-    <div id="q1-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
-        <h1>2. The physical parts of a computer are called:
-</h1>
+    <div id="q2-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+        <h1>2. The physical parts of a computer are called:</h1>
+
 <b>
-  a. Software
-  <br>
-b. Hardware
-  <br> 
-c. Memory
-  <br>
-d. Data
+  a. Software<br>
+  b. Hardware<br>
+  c. Memory<br>
+  d. Data
 </b>
-<br>
-<br>
+
+<br><br>
+
 <div style="width: 60%; margin: auto;">
-    <button id="q1-answer-btn" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
-        Insert your answere
+    <button id="q2-answer-btn" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
+        Insert your answer
     </button>
 </div>
-    </div>
-    <br>
-    <div style="text-align: center;">
-        <button id="q1-next-btn" style="
+
+</div>
+
+<br>
+
+<div style="text-align: center;">
+    <button 
+        style="
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
@@ -38,67 +40,52 @@ d. Data
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s ease;
+            transition: .3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
         "
-        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"
-        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';"
-        onclick="window.location.href='./computergrade.html'">
-            Next Question →
-        </button>
-    </div>
-    
-    <br>
-    <script>
-        // Initialize points object in localStorage
-        let pointsObj = localStorage.getItem('quizPoints');
-        if (!pointsObj) {
-            pointsObj = { total: 0 };
-            localStorage.setItem('quizPoints', JSON.stringify(pointsObj));
-        } else {
-            pointsObj = JSON.parse(pointsObj);
+        onclick="window.location.href='q3.html'">
+        Next Question →
+    </button>
+</div>
+ <script>
+
+    /* -------------------------
+       Initialize Points Object
+    --------------------------- */
+    let pointsObj = localStorage.getItem("quizPoints");
+    if (!pointsObj) {
+        pointsObj = { total: 0 };
+        localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
+    } else {
+        pointsObj = JSON.parse(pointsObj);
+    }
+
+
+    /* -------------------------
+       Answer Button Logic
+    --------------------------- */
+    const answerBtn = document.getElementById("q2-answer-btn");
+
+    answerBtn.addEventListener("click", function () {
+
+        const correctAnswer = "b";
+        const userAnswer = prompt("Insert your answer");
+
+        if (!userAnswer) return;
+
+        if (userAnswer.toLowerCase() === correctAnswer) {
+
+            // ✅ ALWAYS increment point on success
+            pointsObj.total += 1;
+            localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
+ 
+        } 
+        else { 
         }
+    });
 
-        // Initialize meOne flag in localStorage
-        let meOne = localStorage.getItem('meOne');
-        if (!meOne) {
-            meOne = false;
-            localStorage.setItem('meOne', JSON.stringify(meOne));
-        } else {
-            meOne = JSON.parse(meOne);
-        }
+</script>
 
-        // Initialize failed attempt flag in localStorage
-        let hasFailed = localStorage.getItem('hasFailed');
-        if (!hasFailed) {
-            hasFailed = false;
-            localStorage.setItem('hasFailed', JSON.stringify(hasFailed));
-        } else {
-            hasFailed = JSON.parse(hasFailed);
-        }
 
-        const answerBtn = document.getElementById("q1-answer-btn");
-
-        answerBtn.addEventListener("click", function() {
-
-        const answere = "b";
-        const userAnswere = prompt("Insert your answere");
-        if (userAnswere === answere) {
-            // Increment points only if meOne is false AND user hasn't failed before
-            if (!meOne && !hasFailed) {
-                pointsObj.total += 1;
-                localStorage.setItem('quizPoints', JSON.stringify(pointsObj));
-            }
-            // Set meOne to true and add to localStorage
-            meOne = true;
-            localStorage.setItem('meOne', JSON.stringify(meOne));
-        } else {
-            // Mark as failed - no points can be earned anymore for this question
-            hasFailed = true;
-            localStorage.setItem('hasFailed', JSON.stringify(hasFailed));
-        }
-           });
-    </script>
 </body>
 </html>

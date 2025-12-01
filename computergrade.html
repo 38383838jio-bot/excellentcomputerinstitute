@@ -120,60 +120,65 @@
             <button class="reset-btn" onclick="resetQuiz()">Retake Quiz</button>
         </div>
     </div>
-    
-    <script>
-        // Get points from localStorage
-        let pointsObj = localStorage.getItem('quizPoints');
-        let totalPoints = 0;
-        
-        if (pointsObj) {
-            pointsObj = JSON.parse(pointsObj);
-            totalPoints = pointsObj.total || 0;
+     <script>
+    // Get points from localStorage
+    let pointsObj = localStorage.getItem('quizPoints');
+    let totalPoints = 0;
+
+    if (pointsObj) {
+        pointsObj = JSON.parse(pointsObj);
+        totalPoints = pointsObj.total || 0;
+    }
+
+    // ---- IMPORTANT ----
+    // Update this number to match how many questions you have
+    const totalQuestions = 2; 
+    // --------------------
+
+    const percentage = (totalPoints / totalQuestions) * 100;
+
+    // Grade system
+    let gradeLetter = '';
+    let gradeMessage = '';
+
+    if (percentage >= 90) {
+        gradeLetter = 'A';
+        gradeMessage = 'Excellent! Outstanding performance!';
+    } else if (percentage >= 80) {
+        gradeLetter = 'B';
+        gradeMessage = 'Great job! Very good work!';
+    } else if (percentage >= 70) {
+        gradeLetter = 'C';
+        gradeMessage = 'Good effort! Keep practicing!';
+    } else if (percentage >= 60) {
+        gradeLetter = 'D';
+        gradeMessage = 'You passed, but there\'s room for improvement.';
+    } else {
+        gradeLetter = 'F';
+        gradeMessage = 'Keep studying and try again!';
+    }
+
+    // Display results
+    document.getElementById('scoreDisplay').textContent = totalPoints;
+    document.getElementById('totalQuestions').textContent = totalQuestions;
+    document.getElementById('percentageDisplay').textContent = percentage.toFixed(0) + '%';
+    document.getElementById('gradeLetter').textContent = gradeLetter;
+    document.getElementById('gradeMessage').textContent = gradeMessage;
+
+    function resetQuiz() {
+        if (confirm('Are you sure you want to reset your quiz progress?')) {
+            // Remove everything related to quiz
+            localStorage.removeItem('quizPoints');
+            localStorage.removeItem('meOne');
+            localStorage.removeItem('meTwo');
+            localStorage.removeItem('failedQ1');
+            localStorage.removeItem('failedQ2');
+
+            // Redirect to first question
+            window.location.href = 'computerquiz/q1.html';
         }
-        
-        // Total number of questions (update this if you add more questions)
-        const totalQuestions = 2;
-        
-        // Calculate percentage
-        const percentage = (totalPoints / totalQuestions) * 100;
-        
-        // Determine grade letter
-        let gradeLetter = '';
-        let gradeMessage = '';
-        
-        if (percentage >= 90) {
-            gradeLetter = 'A';
-            gradeMessage = 'Excellent! Outstanding performance!';
-        } else if (percentage >= 80) {
-            gradeLetter = 'B';
-            gradeMessage = 'Great job! Very good work!';
-        } else if (percentage >= 70) {
-            gradeLetter = 'C';
-            gradeMessage = 'Good effort! Keep practicing!';
-        } else if (percentage >= 60) {
-            gradeLetter = 'D';
-            gradeMessage = 'You passed, but there\'s room for improvement.';
-        } else {
-            gradeLetter = 'F';
-            gradeMessage = 'Keep studying and try again!';
-        }
-        
-        // Display results
-        document.getElementById('scoreDisplay').textContent = totalPoints;
-        document.getElementById('totalQuestions').textContent = totalQuestions;
-        document.getElementById('percentageDisplay').textContent = percentage.toFixed(0) + '%';
-        document.getElementById('gradeLetter').textContent = gradeLetter;
-        document.getElementById('gradeMessage').textContent = gradeMessage;
-        
-        // Function to reset quiz
-        function resetQuiz() {
-            if (confirm('Are you sure you want to reset your quiz progress?')) {
-                localStorage.removeItem('quizPoints');
-                localStorage.removeItem('meOne');
-                localStorage.removeItem('hasFailed');
-                window.location.href = 'computerquiz/q1.html';
-            }
-        }
-    </script>
+    }
+</script>
+
 </body>
 </html>
