@@ -6,31 +6,29 @@
     <title>Document</title> 
 </head>
 <body>
-    <div id="q2-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
-        <h1>
-2. The physical parts of a computer are called:
+    <div id="q1-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+        <h1>2. The physical parts of a computer are called:
 </h1>
-<b> 
-A. Software
-<br>
-B. Hardware
-<br>
-C. Memory
-<br>
-D. Data
-
+<b>
+  a. Software
+  <br>
+b. Hardware
+  <br> 
+c. Memory
+  <br>
+d. Data
 </b>
 <br>
 <br>
 <div style="width: 60%; margin: auto;">
-    <button id="q2-answer-btn" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
+    <button id="q1-answer-btn" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
         Insert your answere
     </button>
 </div>
     </div>
     <br>
     <div style="text-align: center;">
-        <button id="q2-next-btn" style="
+        <button id="q1-next-btn" style="
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
@@ -43,10 +41,14 @@ D. Data
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"  onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';"  onclick="window.location.href='../computergrade.html'">
-            View Results →
+        "
+        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"
+        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';"
+        onclick="window.location.href='./computergrade.html'">
+            Next Question →
         </button>
     </div>
+    
     <br>
     <script>
         // Initialize points object in localStorage
@@ -76,7 +78,7 @@ D. Data
             hasFailed = JSON.parse(hasFailed);
         }
 
-        const answerBtn = document.getElementById("q2-answer-btn");
+        const answerBtn = document.getElementById("q1-answer-btn");
 
         answerBtn.addEventListener("click", function() {
 
