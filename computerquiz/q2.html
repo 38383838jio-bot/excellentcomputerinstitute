@@ -6,18 +6,7 @@
     <title>Document</title> 
 </head>
 <body>
-    <div id="mee" style="text-align: center; color: green; font-size: 40px;display: none;">
-        <b>
-            Correct 1 point added
-        </b>
-    </div>
-    <br>
-        <div id="fals" style="text-align: center; color: rgb(255, 0, 0); font-size: 40px; display: none;">
-        <b>
-            You fails
-        </b>
-    </div>
-    <div id="me2" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+    <div id="q2-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
         <h1>
 2. The physical parts of a computer are called:
 </h1>
@@ -34,14 +23,14 @@ D. Data
 <br>
 <br>
 <div style="width: 60%; margin: auto;">
-    <button id="me1" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
-        Insert your answere 
+    <button id="q2-answer-btn" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
+        Insert your answere
     </button>
 </div>
     </div>
-    <br>  
+    <br>
     <div style="text-align: center;">
-        <button id="nextBtn" style="
+        <button id="q2-next-btn" style="
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
@@ -54,8 +43,8 @@ D. Data
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"  onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';"  onclick="window.location.href='q2.html'">
-            Next Question →
+        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)';"  onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';"  onclick="window.location.href='../computergrade.html'">
+            View Results →
         </button>
     </div>
     <br>
@@ -87,16 +76,9 @@ D. Data
             hasFailed = JSON.parse(hasFailed);
         }
 
-        const me1 = document.getElementById("me1");
-        const me2 = document.getElementById("me2");
-        const fals = document.getElementById("fals");
-        const me4 = document.getElementById("mee");
-        const pointElement = document.getElementById("point");
+        const answerBtn = document.getElementById("q2-answer-btn");
 
-        // Update points display
-        pointElement.innerHTML = pointsObj.total;
-
-        me1.addEventListener("click", function() {
+        answerBtn.addEventListener("click", function() {
 
         const answere = "b";
         const userAnswere = prompt("Insert your answere");
@@ -105,9 +87,6 @@ D. Data
             if (!meOne && !hasFailed) {
                 pointsObj.total += 1;
                 localStorage.setItem('quizPoints', JSON.stringify(pointsObj));
-                pointElement.innerHTML = pointsObj.total;
-                me4.style.display = "block";
-                setTimeout(() => { me4.style.display = "none"; }, 2000);
             }
             // Set meOne to true and add to localStorage
             meOne = true;
@@ -115,9 +94,7 @@ D. Data
         } else {
             // Mark as failed - no points can be earned anymore for this question
             hasFailed = true;
-            localStorage.setItem('hasFailed', JSON.stringify(hasFailed)); 
-            fals.style.display = "block";
-            setTimeout(() => { fals.style.display = "none"; }, 2000);
+            localStorage.setItem('hasFailed', JSON.stringify(hasFailed));
         }
            });
     </script>
