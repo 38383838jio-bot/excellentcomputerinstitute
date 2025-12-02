@@ -101,7 +101,7 @@
 </div>
 
 <!-- ✅ QUESTION -->
-<div id="q5-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+<div id="q5-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
   <h1>5. Windows, Linux, and macOS are examples of:</h1>
 
   <b>
@@ -132,7 +132,19 @@
       Next Question →
   </button>
 </div>
+<br>
 
+<div style="text-align: center;">
+  <button
+    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white; border: none; padding: 15px 40px; font-size: 18px;
+    font-weight: bold; border-radius: 50px; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
+    text-transform: uppercase;"
+    onclick="window.location.href='../computergrade.html'">
+     My Grade 
+  </button>
+</div>
 <script>
   // ✅ Initialize Points
   let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };

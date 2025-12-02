@@ -117,7 +117,7 @@
         
         <div class="button-group">
             <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
-            <button class="reset-btn" onclick="resetQuiz()">Retake Quiz</button>
+            <button class="reset-btn" onclick="resetQuiz()"> Quiz</button>
 
             <!-- NEW CLEAR BUTTON -->
             <button class="reset-btn" onclick="clearGrade()">Clear My Grade</button>
@@ -165,16 +165,8 @@
     document.getElementById('gradeLetter').textContent = gradeLetter;
     document.getElementById('gradeMessage').textContent = gradeMessage;
 
-    function resetQuiz() {
-        if (confirm('Are you sure you want to reset your quiz progress?')) {
-            localStorage.removeItem('quizPoints');
-            localStorage.removeItem('meOne');
-            localStorage.removeItem('meTwo');
-            localStorage.removeItem('failedQ1');
-            localStorage.removeItem('failedQ2');
-
-            window.location.href = 'computerquiz/q1.html';
-        }
+    function resetQuiz() { 
+            window.location.href = 'computerquiz/q1.html'; 
     }
 
     // ⭐ NEW FUNCTION: CLEAR GRADE WITH ALERT ⭐
@@ -188,7 +180,7 @@
             document.getElementById('gradeMessage').textContent = 'Your grade has been cleared.'; 
             // Remove saved grade
             localStorage.removeItem('quizPoints');
-
+            localStorage.removeItem('answeredOnce'); 
             alert("Your grade has been successfully cleared!");
         }
     }

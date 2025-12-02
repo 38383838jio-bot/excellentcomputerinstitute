@@ -45,15 +45,13 @@
       color: white !important;
     }
   </style>
-</head>
-
+</head> 
 <body>
 
 <!-- ✅ PROGRESS TABLE -->
        <div style="text-align: center; color: green;">
         <h3>
-    list of question and answered ones 
-
+    list of question and answered ones  
         </h3>
        </div>
 <div class="flex-container"> 
@@ -98,9 +96,9 @@
   <a href="./q20.html">
   <div class="number-box" id="btn20">20</div></a>
 </div>
-
+ <br>
 <!-- ✅ QUESTION -->
-<div id="q1-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+<div id="q1-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
   <h1>1. A computer is best defined as:</h1>
   <b>
     A. An electronic device that stores and processes data <br>
@@ -132,7 +130,18 @@
     Next Question →
   </button>
 </div>
-
+<br>
+<div style="text-align: center;">
+  <button
+    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white; border: none; padding: 15px 40px; font-size: 18px;
+    font-weight: bold; border-radius: 50px; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
+    text-transform: uppercase;"
+    onclick="window.location.href='../computergrade.html'">
+     My Grade 
+  </button>
+</div>
 <script>
   // ✅ Initialize points
   let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
@@ -154,8 +163,7 @@
   if (answeredOnce["q1"]) {
     answerBtn.disabled = true;
     answerBtn.style.backgroundColor = "gray";
-  }
-
+  } 
   // ✅ ONE ATTEMPT ONLY
   answerBtn.addEventListener("click", function () {
 
