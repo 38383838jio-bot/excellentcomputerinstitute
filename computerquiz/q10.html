@@ -32,17 +32,40 @@
       font-weight: bold;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
-      cursor: pointer;
-    }
-
-    .number-box:hover {
-      transform: scale(1.1);
     }
 
     .answered {
       background: green !important;
       color: white !important;
+    }
+
+    .option {
+      background: white;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      color: black;
+    }
+
+    .option:hover {
+      background: #ddd;
+    }
+
+    .correct {
+      background: green !important;
+      color: white !important;
+    }
+
+    .wrong {
+      background: red !important;
+      color: white !important;
+    }
+
+    .disabled {
+      pointer-events: none;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -76,38 +99,19 @@
   <a href="./q20.html"><div class="number-box" id="btn20">20</div></a>
 </div>
 
+<br>
+
 <!-- ✅ QUESTION 10 -->
 <div id="q10-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
   <h1>10. The storage device that retains data even when power is off is:</h1>
 
-  <b>
-    A. RAM <br>
-    B. ROM <br>
-    C. CPU <br>
-    D. UPS
-  </b>
-  <br><br>
-
-  <div style="width: 60%; margin: auto;">
-    <button id="q10-answer-btn"
-      style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px;
-      color: white; border: none; border-radius: 5px;">
-      Insert your answer
-    </button>
+  <div class="options">
+    <div class="option" data-answer="a">A. RAM</div>
+    <div class="option" data-answer="b">B. ROM</div>
+    <div class="option" data-answer="c">C. CPU</div>
+    <div class="option" data-answer="d">D. UPS</div>
   </div>
-</div>
-
-<br>
-
-<div style="text-align: center;">
-  <button style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white; border: none; padding: 15px 40px; font-size: 18px; font-weight: bold;
-      border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-      transition: .3s ease; text-transform: uppercase;"
-      onclick="window.location.href='q11.html'">
-      Next Question →
-  </button>
-</div>
+</div> 
 
 <br>
 
@@ -115,9 +119,7 @@
   <button
     style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white; border: none; padding: 15px 40px; font-size: 18px;
-    font-weight: bold; border-radius: 50px; cursor: pointer;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
-    text-transform: uppercase;"
+    font-weight: bold; border-radius: 50px; cursor: pointer;"
     onclick="window.location.href='../computergrade.html'">
      My Grade 
   </button>
@@ -126,9 +128,13 @@
 <script>
   let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
   let answeredOnce = JSON.parse(localStorage.getItem("answeredOnce")) || {};
+  let userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || {};
 
-  const answerBtn = document.getElementById("q10-answer-btn");
+  const options = document.querySelectorAll(".option");
+  const correctAnswer = "b";
+  const questionKey = "q10";
 
+  // ✅ Auto color answered grid
   for (let i = 1; i <= 20; i++) {
     if (answeredOnce["q" + i]) {
       const btn = document.getElementById("btn" + i);
@@ -136,35 +142,56 @@
     }
   }
 
-  if (answeredOnce["q10"]) {
-    answerBtn.disabled = true;
-    answerBtn.style.backgroundColor = "gray";
+  // ✅ Restore previous answer
+  if (answeredOnce[questionKey]) {
+    const savedUserAnswer = userAnswers[questionKey];
+
+    options.forEach(opt => {
+      const ans = opt.dataset.answer;
+
+      if (ans === savedUserAnswer) {
+        opt.classList.add(ans === correctAnswer ? "correct" : "wrong");
+      }
+
+      if (ans === correctAnswer) {
+        opt.classList.add("correct");
+      }
+
+      opt.classList.add("disabled");
+    });
   }
 
-  answerBtn.addEventListener("click", function () {
-    if (answeredOnce["q10"]) {
-      alert("You already answered this question.");
-      return;
-    }
+  // ✅ Click handler
+  options.forEach(option => {
+    option.addEventListener("click", function () {
+      if (answeredOnce[questionKey]) return;
 
-    const correctAnswer = "b";
-    const userAnswer = prompt("Insert your answer");
+      const userAnswer = this.dataset.answer;
 
-    if (!userAnswer) return;
+      answeredOnce[questionKey] = true;
+      userAnswers[questionKey] = userAnswer;
 
-    answeredOnce["q10"] = true;
-    localStorage.setItem("answeredOnce", JSON.stringify(answeredOnce));
+      localStorage.setItem("answeredOnce", JSON.stringify(answeredOnce));
+      localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 
-    if (userAnswer.toLowerCase() === correctAnswer) {
-      pointsObj.total += 1;
-      localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-      window.location.href = "q11.html";
-    }
+      if (userAnswer === correctAnswer) {
+        this.classList.add("correct");
+        pointsObj.total += 1;
+        localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
+        setTimeout(() => window.location.href = "q11.html", 800);
+      } else {
+        this.classList.add("wrong");
+        document.querySelector(`[data-answer="${correctAnswer}"]`)
+          .classList.add("correct");
+      }
 
-    document.getElementById("btn10").classList.add("answered");
-
-    this.disabled = true;
-    this.style.backgroundColor = "gray";
+      document.getElementById("btn10").classList.add("answered");
+      options.forEach(opt => opt.classList.add("disabled"));
+           // ✅ REDIRECT TO Q2 FOR BOTH CORRECT & WRONG
+      setTimeout(() => {
+        window.location.href = "q11.html";
+      }, 1200);
+    });
   });
 </script>
 

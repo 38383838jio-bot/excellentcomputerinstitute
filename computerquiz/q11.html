@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Q5</title>
+  <title>Q11</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -32,7 +32,6 @@
       font-weight: bold;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      cursor: pointer;
     }
 
     .answered {
@@ -40,7 +39,6 @@
       color: white !important;
     }
 
-    /* ✅ ANSWER OPTIONS */
     .option {
       background: white;
       padding: 10px;
@@ -75,8 +73,8 @@
 <body>
 
 <div style="text-align: center; color: green;">
-  <h3>List of question and answered ones</h3>
-</div>
+  <h3>List of questions and answered ones</h3>
+</div> 
 
 <div class="flex-container"> 
   <a href="./q1.html"><div class="number-box" id="btn1">1</div></a>
@@ -103,17 +101,18 @@
 
 <br>
 
-<!-- ✅ QUESTION -->
-<div id="q5-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
-  <h1>5. Windows, Linux, and macOS are examples of:</h1>
+<!-- ✅ QUESTION 11 -->
+<div id="q11-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
+  <h1>11. Which device is used to input text into a computer?</h1>
 
   <div class="options">
-    <div class="option" data-answer="a">A. Computer languages</div>
-    <div class="option" data-answer="b">B. Operating systems</div>
-    <div class="option" data-answer="c">C. Antivirus software</div>
-    <div class="option" data-answer="d">D. Hardware tools</div>
+    <div class="option" data-answer="a">A. Monitor</div>
+    <div class="option" data-answer="b">B. Printer</div>
+    <div class="option" data-answer="c">C. Keyboard</div>
+    <div class="option" data-answer="d">D. Speaker</div>
   </div>
 </div> 
+
 <br>
 
 <div style="text-align: center;">
@@ -132,10 +131,10 @@
   let userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || {};
 
   const options = document.querySelectorAll(".option");
-  const correctAnswer = "b";
-  const questionKey = "q5";
+  const correctAnswer = "c";   // ✅ Keyboard
+  const questionKey = "q11";
 
-  // ✅ Color answered grid
+  // ✅ Auto color answered grid
   for (let i = 1; i <= 20; i++) {
     if (answeredOnce["q" + i]) {
       const btn = document.getElementById("btn" + i);
@@ -143,7 +142,7 @@
     }
   }
 
-  // ✅ Restore answer on revisit
+  // ✅ Restore previous answer
   if (answeredOnce[questionKey]) {
     const savedUserAnswer = userAnswers[questionKey];
 
@@ -151,11 +150,7 @@
       const ans = opt.dataset.answer;
 
       if (ans === savedUserAnswer) {
-        if (ans === correctAnswer) {
-          opt.classList.add("correct");
-        } else {
-          opt.classList.add("wrong");
-        }
+        opt.classList.add(ans === correctAnswer ? "correct" : "wrong");
       }
 
       if (ans === correctAnswer) {
@@ -183,18 +178,17 @@
         this.classList.add("correct");
         pointsObj.total += 1;
         localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-        setTimeout(() => window.location.href = "q6.html", 800);
-
       } else {
         this.classList.add("wrong");
         document.querySelector(`[data-answer="${correctAnswer}"]`)
           .classList.add("correct");
-      } 
-      document.getElementById("btn5").classList.add("answered"); 
-      options.forEach(opt => opt.classList.add("disabled"));
-           // ✅ REDIRECT TO Q2 FOR BOTH CORRECT & WRONG
+      }
+
+      document.getElementById("btn11").classList.add("answered");
+      options.forEach(opt => opt.classList.add("disabled")); 
+      // ✅ Redirect to Q12
       setTimeout(() => {
-        window.location.href = "q6.html";
+        window.location.href = "q12.html";
       }, 1200);
     });
   });

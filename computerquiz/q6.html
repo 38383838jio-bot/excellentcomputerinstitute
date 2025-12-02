@@ -32,129 +32,111 @@
       font-weight: bold;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
       cursor: pointer;
-    }
-
-    .number-box:hover {
-      transform: scale(1.1);
     }
 
     .answered {
       background: green !important;
       color: white !important;
     }
+
+    /* ✅ ANSWER OPTIONS */
+    .option {
+      background: white;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      color: black;
+    }
+
+    .option:hover {
+      background: #ddd;
+    }
+
+    .correct {
+      background: green !important;
+      color: white !important;
+    }
+
+    .wrong {
+      background: red !important;
+      color: white !important;
+    }
+
+    .disabled {
+      pointer-events: none;
+      opacity: 0.7;
+    }
   </style>
 </head>
 
 <body>
 
-<!-- ✅ ANSWER TABLE -->
-      <div style="text-align: center; color: green;">
-        <h3>
-    list of question and answered ones 
-
-        </h3>
-       </div>
+<div style="text-align: center; color: green;">
+  <h3>List of question and answered ones</h3>
+</div>
 
 <div class="flex-container"> 
-    <a href="./q1.html">
-  <div class="number-box" id="btn1">1</div></a>
-  <a href="./q2.html">
-  <div class="number-box" id="btn2">2</div></a>
-  <a href="./q3.html">
-  <div class="number-box" id="btn3">3</div></a>
-  <a href="./q4.html">
-  <div class="number-box" id="btn4">4</div></a>
-
- <a href="./q5.html"> <div class="number-box" id="btn5">5</div></a>
- <a href="./q6.html">
-  <div class="number-box" id="btn6">6</div></a>
-  <a href="./q7.html">
-  <div class="number-box" id="btn7">7</div></a>
-  <a href="q8.html"> 
-  <div class="number-box" id="btn8">8</div></a>
-  <a href="./q9.html">
-  <div class="number-box" id="btn9">9</div></a>
-  <a href="q10.html">
-  <div class="number-box" id="btn10">10</div></a>
-  <a href="q11.html">
-  <div class="number-box" id="btn11">11</div></a>
-  <a href="./q12.html">
-  <div class="number-box" id="btn12">12</div></a>
-  <a href="./q13.html">
-  <div class="number-box" id="btn13">13</div></a>
-  <a href="./q14.html">
-  <div class="number-box" id="btn14">14</div></a>
-  <a href="./q15.html">
-  <div class="number-box" id="btn15">15</div></a>
-  <a href="./q16.html">
-  <div class="number-box" id="btn16">16</div> </a>
-  <a href="./q17.html">
-  <div class="number-box" id="btn17">17</div></a>
-  <a href="./q18.html">
-  <div class="number-box" id="btn18">18</div></a>
-  <a href="./q19.html">
-  <div class="number-box" id="btn19">19</div></a>
-  <a href="./q20.html">
-  <div class="number-box" id="btn20">20</div></a>
+  <a href="./q1.html"><div class="number-box" id="btn1">1</div></a>
+  <a href="./q2.html"><div class="number-box" id="btn2">2</div></a>
+  <a href="./q3.html"><div class="number-box" id="btn3">3</div></a>
+  <a href="./q4.html"><div class="number-box" id="btn4">4</div></a>
+  <a href="./q5.html"><div class="number-box" id="btn5">5</div></a>
+  <a href="./q6.html"><div class="number-box" id="btn6">6</div></a>
+  <a href="./q7.html"><div class="number-box" id="btn7">7</div></a>
+  <a href="./q8.html"><div class="number-box" id="btn8">8</div></a>
+  <a href="./q9.html"><div class="number-box" id="btn9">9</div></a>
+  <a href="./q10.html"><div class="number-box" id="btn10">10</div></a>
+  <a href="./q11.html"><div class="number-box" id="btn11">11</div></a>
+  <a href="./q12.html"><div class="number-box" id="btn12">12</div></a>
+  <a href="./q13.html"><div class="number-box" id="btn13">13</div></a>
+  <a href="./q14.html"><div class="number-box" id="btn14">14</div></a>
+  <a href="./q15.html"><div class="number-box" id="btn15">15</div></a>
+  <a href="./q16.html"><div class="number-box" id="btn16">16</div></a>
+  <a href="./q17.html"><div class="number-box" id="btn17">17</div></a>
+  <a href="./q18.html"><div class="number-box" id="btn18">18</div></a>
+  <a href="./q19.html"><div class="number-box" id="btn19">19</div></a>
+  <a href="./q20.html"><div class="number-box" id="btn20">20</div></a>
 </div>
+
+<br>
 
 <!-- ✅ QUESTION -->
 <div id="q6-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
   <h1>6. Which of these is used for pointing and clicking?</h1>
 
-  <b>
-    A. Mouse <br>
-    B. Keyboard <br>
-    C. Printer <br>
-    D. Speaker
-  </b>
-  <br><br>
-
-  <div style="width: 60%; margin: auto;">
-    <button id="q6-answer-btn"
-      style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px;
-      color: white; border: none; border-radius: 5px;">
-      Insert your answer
-    </button>
+  <div class="options">
+    <div class="option" data-answer="a">A. Mouse</div>
+    <div class="option" data-answer="b">B. Keyboard</div>
+    <div class="option" data-answer="c">C. Printer</div>
+    <div class="option" data-answer="d">D. Speaker</div>
   </div>
-</div>
+</div> 
 
-<br>
-
-<div style="text-align: center;">
-  <button style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white; border: none; padding: 15px 40px; font-size: 18px; font-weight: bold;
-      border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-      transition: .3s ease; text-transform: uppercase;"
-      onclick="window.location.href='q7.html'">
-      Next Question →
-  </button>
-</div>
 <br>
 
 <div style="text-align: center;">
   <button
     style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white; border: none; padding: 15px 40px; font-size: 18px;
-    font-weight: bold; border-radius: 50px; cursor: pointer;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
-    text-transform: uppercase;"
+    font-weight: bold; border-radius: 50px; cursor: pointer;"
     onclick="window.location.href='../computergrade.html'">
      My Grade 
   </button>
 </div>
+
 <script>
-  // ✅ Initialize Points
   let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
-
-  // ✅ Track answered questions
   let answeredOnce = JSON.parse(localStorage.getItem("answeredOnce")) || {};
+  let userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || {};
 
-  const answerBtn = document.getElementById("q6-answer-btn");
+  const options = document.querySelectorAll(".option");
+  const correctAnswer = "a";
+  const questionKey = "q6";
 
-  // ✅ AUTO-COLOR ANSWERED QUESTIONS
+  // ✅ Color answered grid
   for (let i = 1; i <= 20; i++) {
     if (answeredOnce["q" + i]) {
       const btn = document.getElementById("btn" + i);
@@ -162,41 +144,62 @@
     }
   }
 
-  // ✅ LOCK Q6 IF ALREADY ANSWERED
-  if (answeredOnce["q6"]) {
-    answerBtn.disabled = true;
-    answerBtn.style.backgroundColor = "gray";
+  // ✅ Restore answer on revisit
+  if (answeredOnce[questionKey]) {
+    const savedUserAnswer = userAnswers[questionKey];
+
+    options.forEach(opt => {
+      const ans = opt.dataset.answer;
+
+      if (ans === savedUserAnswer) {
+        if (ans === correctAnswer) {
+          opt.classList.add("correct");
+        } else {
+          opt.classList.add("wrong");
+        }
+      }
+
+      if (ans === correctAnswer) {
+        opt.classList.add("correct");
+      }
+
+      opt.classList.add("disabled");
+    });
   }
 
-  // ✅ ONE ATTEMPT ONLY
-  answerBtn.addEventListener("click", function () {
+  // ✅ Click handler
+  options.forEach(option => {
+    option.addEventListener("click", function () {
+      if (answeredOnce[questionKey]) return;
 
-    if (answeredOnce["q6"]) {
-      alert("You already answered this question.");
-      return;
-    }
+      const userAnswer = this.dataset.answer;
 
-    const correctAnswer = "a";
-    const userAnswer = prompt("Insert your answer");
+      answeredOnce[questionKey] = true;
+      userAnswers[questionKey] = userAnswer;
 
-    if (!userAnswer) return;
+      localStorage.setItem("answeredOnce", JSON.stringify(answeredOnce));
+      localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 
-    // ✅ Lock question permanently
-    answeredOnce["q6"] = true;
-    localStorage.setItem("answeredOnce", JSON.stringify(answeredOnce));
+      if (userAnswer === correctAnswer) {
+        this.classList.add("correct");
+        pointsObj.total += 1;
+        localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
+      } else {
+        this.classList.add("wrong");
+        setTimeout(() => window.location.href = "q7.html", 800);
 
-    if (userAnswer.toLowerCase() === correctAnswer) {
-      pointsObj.total += 1;
-      localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-      window.location.href = "q7.html";
-    }
+        document.querySelector(`[data-answer="${correctAnswer}"]`)
+          .classList.add("correct");
+      }
 
-    // ✅ Turn number 6 GREEN
-    document.getElementById("btn6").classList.add("answered");
+      document.getElementById("btn6").classList.add("answered");
 
-    // ✅ Disable button
-    this.disabled = true;
-    this.style.backgroundColor = "gray";
+      options.forEach(opt => opt.classList.add("disabled"));
+           // ✅ REDIRECT TO Q2 FOR BOTH CORRECT & WRONG
+      setTimeout(() => {
+        window.location.href = "q7.html";
+      }, 1200);
+    });
   });
 </script>
 

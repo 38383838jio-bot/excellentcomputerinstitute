@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,126 +33,108 @@
       font-weight: bold;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
       cursor: pointer;
-    }
-
-    .number-box:hover {
-      transform: scale(1.1);
     }
 
     .answered {
       background: green !important;
       color: white !important;
     }
+
+    .option {
+      background: white;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      color: black;
+    }
+
+    .option:hover {
+      background: #ddd;
+    }
+
+    .correct {
+      background: green !important;
+      color: white !important;
+    }
+
+    .wrong {
+      background: red !important;
+      color: white !important;
+    }
+
+    .disabled {
+      pointer-events: none;
+      opacity: 0.7;
+    }
   </style>
-</head> 
+</head>
+
 <body>
 
-<!-- ✅ PROGRESS TABLE -->
-       <div style="text-align: center; color: green;">
-        <h3>
-    list of question and answered ones  
-        </h3>
-       </div>
-<div class="flex-container"> 
-    <a href="./q1.html">
-  <div class="number-box" id="btn1">1</div></a>
-  <a href="./q2.html">
-  <div class="number-box" id="btn2">2</div></a>
-  <a href="./q3.html">
-  <div class="number-box" id="btn3">3</div></a>
-  <a href="./q4.html">
-  <div class="number-box" id="btn4">4</div></a>
-
- <a href="./q5.html"> <div class="number-box" id="btn5">5</div></a>
- <a href="./q6.html">
-  <div class="number-box" id="btn6">6</div></a>
-  <a href="./q7.html">
-  <div class="number-box" id="btn7">7</div></a>
-  <a href="q8.html"> 
-  <div class="number-box" id="btn8">8</div></a>
-  <a href="./q9.html">
-  <div class="number-box" id="btn9">9</div></a>
-  <a href="q10.html">
-  <div class="number-box" id="btn10">10</div></a>
-  <a href="q11.html">
-  <div class="number-box" id="btn11">11</div></a>
-  <a href="./q12.html">
-  <div class="number-box" id="btn12">12</div></a>
-  <a href="./q13.html">
-  <div class="number-box" id="btn13">13</div></a>
-  <a href="./q14.html">
-  <div class="number-box" id="btn14">14</div></a>
-  <a href="./q15.html">
-  <div class="number-box" id="btn15">15</div></a>
-  <a href="./q16.html">
-  <div class="number-box" id="btn16">16</div> </a>
-  <a href="./q17.html">
-  <div class="number-box" id="btn17">17</div></a>
-  <a href="./q18.html">
-  <div class="number-box" id="btn18">18</div></a>
-  <a href="./q19.html">
-  <div class="number-box" id="btn19">19</div></a>
-  <a href="./q20.html">
-  <div class="number-box" id="btn20">20</div></a>
+<div style="text-align: center; color: green;">
+  <h3>List of question and answered ones</h3>
 </div>
- <br>
-<!-- ✅ QUESTION -->
+
+<div class="flex-container">
+  <a href="./q1.html"><div class="number-box" id="btn1">1</div></a>
+  <a href="./q2.html"><div class="number-box" id="btn2">2</div></a>
+  <a href="./q3.html"><div class="number-box" id="btn3">3</div></a>
+  <a href="./q4.html"><div class="number-box" id="btn4">4</div></a>
+  <a href="./q5.html"><div class="number-box" id="btn5">5</div></a>
+  <a href="./q6.html"><div class="number-box" id="btn6">6</div></a>
+  <a href="./q7.html"><div class="number-box" id="btn7">7</div></a>
+  <a href="./q8.html"><div class="number-box" id="btn8">8</div></a>
+  <a href="./q9.html"><div class="number-box" id="btn9">9</div></a>
+  <a href="./q10.html"><div class="number-box" id="btn10">10</div></a>
+  <a href="./q11.html"><div class="number-box" id="btn11">11</div></a>
+  <a href="./q12.html"><div class="number-box" id="btn12">12</div></a>
+  <a href="./q13.html"><div class="number-box" id="btn13">13</div></a>
+  <a href="./q14.html"><div class="number-box" id="btn14">14</div></a>
+  <a href="./q15.html"><div class="number-box" id="btn15">15</div></a>
+  <a href="./q16.html"><div class="number-box" id="btn16">16</div></a>
+  <a href="./q17.html"><div class="number-box" id="btn17">17</div></a>
+  <a href="./q18.html"><div class="number-box" id="btn18">18</div></a>
+  <a href="./q19.html"><div class="number-box" id="btn19">19</div></a>
+  <a href="./q20.html"><div class="number-box" id="btn20">20</div></a>
+</div>
+
+<br>
+
 <div id="q1-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
   <h1>1. A computer is best defined as:</h1>
-  <b>
-    A. An electronic device that stores and processes data <br>
-    B. A machine that cooks food <br>
-    C. A device for playing music <br>
-    D. None of the above
-  </b>
-  <br><br>
 
-  <div style="width: 60%; margin: auto;">
-    <button id="q1-answer-btn"
-      style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px;
-      color: white; border: none; border-radius: 5px;">
-      Insert your answer
-    </button>
+  <div class="options">
+    <div class="option" data-answer="a">A. An electronic device that stores and processes data</div>
+    <div class="option" data-answer="b">B. A machine that cooks food</div>
+    <div class="option" data-answer="c">C. A device for playing music</div>
+    <div class="option" data-answer="d">D. None of the above</div>
   </div>
-</div>
+</div> 
 
-<br>
+<br> 
 
 <div style="text-align: center;">
   <button
     style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white; border: none; padding: 15px 40px; font-size: 18px;
-    font-weight: bold; border-radius: 50px; cursor: pointer;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
-    text-transform: uppercase;"
-    onclick="window.location.href='q2.html'">
-    Next Question →
-  </button>
-</div>
-<br>
-<div style="text-align: center;">
-  <button
-    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white; border: none; padding: 15px 40px; font-size: 18px;
-    font-weight: bold; border-radius: 50px; cursor: pointer;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
-    text-transform: uppercase;"
+    font-weight: bold; border-radius: 50px; cursor: pointer;"
     onclick="window.location.href='../computergrade.html'">
-     My Grade 
+     My Grade
   </button>
-</div>
+</div> 
+
 <script>
-  // ✅ Initialize points
   let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
-
-  // ✅ Track answered questions
   let answeredOnce = JSON.parse(localStorage.getItem("answeredOnce")) || {};
+  let userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || {};
 
-  const answerBtn = document.getElementById("q1-answer-btn");
+  const options = document.querySelectorAll(".option");
+  const correctAnswer = "a";
+  const questionKey = "q1";
 
-  // ✅ AUTO-COLOR ALREADY ANSWERED
   for (let i = 1; i <= 20; i++) {
     if (answeredOnce["q" + i]) {
       const btn = document.getElementById("btn" + i);
@@ -159,39 +142,54 @@
     }
   }
 
-  // ✅ LOCK IF ALREADY ANSWERED
-  if (answeredOnce["q1"]) {
-    answerBtn.disabled = true;
-    answerBtn.style.backgroundColor = "gray";
-  } 
-  // ✅ ONE ATTEMPT ONLY
-  answerBtn.addEventListener("click", function () {
+  if (answeredOnce[questionKey]) {
+    const savedUserAnswer = userAnswers[questionKey];
 
-    if (answeredOnce["q1"]) {
-      alert("You already answered this question.");
-      return;
-    }
+    options.forEach(opt => {
+      const ans = opt.dataset.answer;
 
-    const correctAnswer = "a";
-    const userAnswer = prompt("Insert your answer");
+      if (ans === savedUserAnswer) {
+        opt.classList.add(ans === correctAnswer ? "correct" : "wrong");
+      }
 
-    if (!userAnswer) return;
+      if (ans === correctAnswer) {
+        opt.classList.add("correct");
+      }
 
-    // ✅ Save answer permanently
-    answeredOnce["q1"] = true;
-    localStorage.setItem("answeredOnce", JSON.stringify(answeredOnce));
+      opt.classList.add("disabled");
+    });
+  }
 
-    if (userAnswer.toLowerCase() === correctAnswer) {
-      pointsObj.total += 1;
-      localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-    }
+  options.forEach(option => {
+    option.addEventListener("click", function () {
+      if (answeredOnce[questionKey]) return;
 
-    // ✅ Turn number 1 GREEN
-    document.getElementById("btn1").classList.add("answered");
+      const userAnswer = this.dataset.answer;
 
-    // ✅ Disable button
-    this.disabled = true;
-    this.style.backgroundColor = "gray";
+      answeredOnce[questionKey] = true;
+      userAnswers[questionKey] = userAnswer;
+
+      localStorage.setItem("answeredOnce", JSON.stringify(answeredOnce));
+      localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+
+      if (userAnswer === correctAnswer) {
+        this.classList.add("correct");
+        pointsObj.total += 1;
+        localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
+      } else {
+        this.classList.add("wrong");
+        document.querySelector(`[data-answer="${correctAnswer}"]`)
+          .classList.add("correct");
+      }
+
+      document.getElementById("btn1").classList.add("answered");
+      options.forEach(opt => opt.classList.add("disabled"));
+
+      // ✅ REDIRECT TO Q2 FOR BOTH CORRECT & WRONG
+      setTimeout(() => {
+        window.location.href = "q2.html";
+      }, 1200);
+    });
   });
 </script>
 
