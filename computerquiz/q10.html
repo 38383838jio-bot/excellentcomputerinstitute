@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q10</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      max-width: 400px;
+      margin: 10px auto;
+    }
+
+    .number-box {
+      width: 70px;
+      height: 50px;
+      background: linear-gradient(135deg, #ffffff, #d3d3d3);
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .number-box:hover {
+      transform: scale(1.1);
+    }
+
+    .answered {
+      background: green !important;
+      color: white !important;
+    }
+  </style>
+</head>
+
+<body>
+
+<div style="text-align: center; color: green;">
+  <h3>List of questions and answered ones</h3>
+</div> 
+
+<div class="flex-container"> 
+  <a href="./q1.html"><div class="number-box" id="btn1">1</div></a>
+  <a href="./q2.html"><div class="number-box" id="btn2">2</div></a>
+  <a href="./q3.html"><div class="number-box" id="btn3">3</div></a>
+  <a href="./q4.html"><div class="number-box" id="btn4">4</div></a>
+  <a href="./q5.html"><div class="number-box" id="btn5">5</div></a>
+  <a href="./q6.html"><div class="number-box" id="btn6">6</div></a>
+  <a href="./q7.html"><div class="number-box" id="btn7">7</div></a>
+  <a href="./q8.html"><div class="number-box" id="btn8">8</div></a>
+  <a href="./q9.html"><div class="number-box" id="btn9">9</div></a>
+  <a href="./q10.html"><div class="number-box" id="btn10">10</div></a>
+  <a href="./q11.html"><div class="number-box" id="btn11">11</div></a>
+  <a href="./q12.html"><div class="number-box" id="btn12">12</div></a>
+  <a href="./q13.html"><div class="number-box" id="btn13">13</div></a>
+  <a href="./q14.html"><div class="number-box" id="btn14">14</div></a>
+  <a href="./q15.html"><div class="number-box" id="btn15">15</div></a>
+  <a href="./q16.html"><div class="number-box" id="btn16">16</div></a>
+  <a href="./q17.html"><div class="number-box" id="btn17">17</div></a>
+  <a href="./q18.html"><div class="number-box" id="btn18">18</div></a>
+  <a href="./q19.html"><div class="number-box" id="btn19">19</div></a>
+  <a href="./q20.html"><div class="number-box" id="btn20">20</div></a>
+</div>
+
+<!-- ✅ QUESTION 10 -->
+<div id="q10-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
+  <h1>10. The storage device that retains data even when power is off is:</h1>
+
+  <b>
+    A. RAM <br>
+    B. ROM <br>
+    C. CPU <br>
+    D. UPS
+  </b>
+  <br><br>
+
+  <div style="width: 60%; margin: auto;">
+    <button id="q10-answer-btn"
+      style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px;
+      color: white; border: none; border-radius: 5px;">
+      Insert your answer
+    </button>
+  </div>
+</div>
+
+<br>
+
+<div style="text-align: center;">
+  <button style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white; border: none; padding: 15px 40px; font-size: 18px; font-weight: bold;
+      border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: .3s ease; text-transform: uppercase;"
+      onclick="window.location.href='q11.html'">
+      Next Question →
+  </button>
+</div>
+
+<br>
+
+<div style="text-align: center;">
+  <button
+    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white; border: none; padding: 15px 40px; font-size: 18px;
+    font-weight: bold; border-radius: 50px; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
+    text-transform: uppercase;"
+    onclick="window.location.href='../computergrade.html'">
+     My Grade 
+  </button>
+</div>
+
+<script>
+  let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
+  let answeredOnce = JSON.parse(localStorage.getItem("answeredOnce")) || {};
+
+  const answerBtn = document.getElementById("q10-answer-btn");
+
+  for (let i = 1; i <= 20; i++) {
+    if (answeredOnce["q" + i]) {
+      const btn = document.getElementById("btn" + i);
+      if (btn) btn.classList.add("answered");
+    }
+  }
+
+  if (answeredOnce["q10"]) {
+    answerBtn.disabled = true;
+    answerBtn.style.backgroundColor = "gray";
+  }
+
+  answerBtn.addEventListener("click", function () {
+    if (answeredOnce["q10"]) {
+      alert("You already answered this question.");
+      return;
+    }
+
+    const correctAnswer = "b";
+    const userAnswer = prompt("Insert your answer");
+
+    if (!userAnswer) return;
+
+    answeredOnce["q10"] = true;
+    localStorage.setItem("answeredOnce", JSON.stringify(answeredOnce));
+
+    if (userAnswer.toLowerCase() === correctAnswer) {
+      pointsObj.total += 1;
+      localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
+      window.location.href = "q11.html";
+    }
+
+    document.getElementById("btn10").classList.add("answered");
+
+    this.disabled = true;
+    this.style.backgroundColor = "gray";
+  });
+</script>
+
+</body>
+</html>
