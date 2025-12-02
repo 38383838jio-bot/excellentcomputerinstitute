@@ -57,10 +57,8 @@ document.getElementById("q2-answer-btn").addEventListener("click", function () {
 
     if (userAnswer.toLowerCase() === correctAnswer) {
         pointsObj.total += 1;
-        localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-        alert("Correct! +1 point");
-    } else {
-        alert("Wrong answer!");
+        localStorage.setItem("quizPoints", JSON.stringify(pointsObj)); 
+    } else { 
     }
 
     // Refresh the score on screen

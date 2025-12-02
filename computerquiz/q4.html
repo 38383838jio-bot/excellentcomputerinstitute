@@ -53,8 +53,7 @@
         if (userAnswer.toLowerCase() === correctAnswer) {
             pointsObj.total += 1;
             localStorage.setItem("quizPoints", JSON.stringify(pointsObj)); 
-        } else {
-            alert("Wrong answer!");
+        } else { 
         }
 
         // Update score display if exists
