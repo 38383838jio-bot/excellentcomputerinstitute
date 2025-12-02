@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4</title>
+</head>
+
+<body>
+
+<div id="q4-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+    <h1>4. A program that manages the computer’s hardware is called:</h1>
+
+    <b>
+        A. Application software <br>
+        B. Operating system <br>
+        C. Browser <br>
+        D. Spreadsheet
+    </b>
+    <br><br>
+
+    <div style="width: 60%; margin: auto;">
+        <button id="q4-answer-btn"
+            style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
+            Insert your answer
+        </button>
+    </div>
+</div>
+
+<br>
+
+<div style="text-align: center;">
+    <button style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white; border: none; padding: 15px 40px; font-size: 18px; font-weight: bold;
+        border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        transition: .3s ease; text-transform: uppercase;"
+        onclick="window.location.href='q5.html'">
+        Next Question →
+    </button>
+</div>
+
+<script>
+    // Initialize Points (EXACT same as Q3)
+    let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
+
+    // Answer Button (EXACT same logic as Q3)
+    document.getElementById("q4-answer-btn").addEventListener("click", function () {
+        const correctAnswer = "b";   // ✅ Correct answer for Q4
+        const userAnswer = prompt("Insert your answer");
+
+        if (!userAnswer) return;
+
+        if (userAnswer.toLowerCase() === correctAnswer) {
+            pointsObj.total += 1;
+            localStorage.setItem("quizPoints", JSON.stringify(pointsObj)); 
+        } else {
+            alert("Wrong answer!");
+        }
+
+        // Update score display if exists
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        if (scoreDisplay) {
+            scoreDisplay.innerText = "Score: " + pointsObj.total;
+        }
+    });
+</script>
+
+</body>
+</html>

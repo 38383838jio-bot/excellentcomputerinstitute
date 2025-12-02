@@ -1,91 +1,76 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
+    <title>Q2</title>
 </head>
 <body>
-    <div id="q1-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
-        <h1>1. A computer is best defined as:</h1>
-        <b>
-            a. An electronic device that stores and processes data<br>
-            b. A machine that cooks food<br>
-            c. A device for playing music<br>
-            d. None of the above
-        </b>
-        <br><br>
 
-        <div style="width: 60%; margin: auto;">
-            <button id="q1-answer-btn" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
-                Insert your answer
-            </button>
-        </div>
-    </div>
+<div id="q2-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+    <h1>
+1. A computer is best defined as:</h1>
+    <b>    
+ a. An electronic device that stores and processes data
+ <br>
+b. A machine that cooks food
+ <br> 
+c. A device for playing music
+ <br> 
+d. None of the above 
+    </b>
+    <br><br> 
 
-    <br>
-
-    <div style="text-align: center;">
-        <button id="q1-next-btn" style="
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;"
-            onclick="window.location.href='q2.html'">
-            Next Question →
+    <div style="width: 60%; margin: auto;">
+        <button id="q2-answer-btn"
+            style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px;
+            color: white; border: none; border-radius: 5px;">
+            Insert your answer
         </button>
     </div>
+</div>
 
-    <br>
+<br>
 
-    <script>
-        // Initialize points if not existing
-        if (!localStorage.getItem("points")) {
-            localStorage.setItem("points", "0");
-        }
+<div style="text-align: center;">
+    <button 
+        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+               color: white; border: none; padding: 15px 40px; font-size: 18px;
+               font-weight: bold; border-radius: 50px; cursor: pointer;
+               box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
+               text-transform: uppercase;"
+        onclick="window.location.href='q3.html'">
+        Next Question →
+    </button>
+</div>
 
-        // Initialize answered questions storage
-        if (!localStorage.getItem("answered")) {
-            localStorage.setItem("answered", JSON.stringify({}));
-        }
 
-        const answerBtn = document.getElementById("q1-answer-btn");
 
-        answerBtn.addEventListener("click", function () {
+<script>
+// ------------------------- Initialize Points -------------------------
+let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
+ 
 
-            const correctAnswer = "a";
-            const userAnswer = prompt("Insert your answer");
-            const answered = JSON.parse(localStorage.getItem("answered"));
+// ------------------------- Answer Button -------------------------
+document.getElementById("q2-answer-btn").addEventListener("click", function () {
 
-            // Prevent double scoring
-            if (answered["q1"]) {
-                alert("You already answered this question. No points added.");
-                return;
-            }
+    const correctAnswer = "a";
+    const userAnswer = prompt("Insert your answer");
 
-            if (userAnswer === correctAnswer) {
+    if (!userAnswer) return;
 
-                // Mark as answered
-                answered["q1"] = true;
-                localStorage.setItem("answered", JSON.stringify(answered));
+    if (userAnswer.toLowerCase() === correctAnswer) {
+        pointsObj.total += 1;
+        localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
+        alert("Correct! +1 point");
+    } else {
+        alert("Wrong answer!");
+    }
 
-                // Add 1 point
-                let points = parseInt(localStorage.getItem("points"), 10);
-                points += 1;
-                localStorage.setItem("points", points.toString()); 
-
-            } else { 
-            }
-        });
-    </script>
+    // Refresh the score on screen
+    document.getElementById("scoreDisplay").innerText = "Score: " + pointsObj.total;
+});
+</script>
 
 </body>
 </html>

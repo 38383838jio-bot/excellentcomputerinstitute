@@ -108,7 +108,7 @@
         <div class="score-display">
             <div class="score-label">Your Score</div>
             <div class="score-number" id="scoreDisplay">0</div>
-            <div class="score-label">out of <span id="totalQuestions">2</span> questions</div>
+            <div class="score-label">out of <span id="totalQuestions"> </span> questions</div>
             <div class="percentage" id="percentageDisplay">0%</div>
         </div>
         
@@ -118,9 +118,13 @@
         <div class="button-group">
             <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
             <button class="reset-btn" onclick="resetQuiz()">Retake Quiz</button>
+
+            <!-- NEW CLEAR BUTTON -->
+            <button class="reset-btn" onclick="clearGrade()">Clear My Grade</button>
         </div>
     </div>
-     <script>
+
+<script>
     // Get points from localStorage
     let pointsObj = localStorage.getItem('quizPoints');
     let totalPoints = 0;
@@ -130,11 +134,7 @@
         totalPoints = pointsObj.total || 0;
     }
 
-    // ---- IMPORTANT ----
-    // Update this number to match how many questions you have
-    const totalQuestions = 2; 
-    // --------------------
-
+    const totalQuestions = 100; 
     const percentage = (totalPoints / totalQuestions) * 100;
 
     // Grade system
@@ -167,15 +167,29 @@
 
     function resetQuiz() {
         if (confirm('Are you sure you want to reset your quiz progress?')) {
-            // Remove everything related to quiz
             localStorage.removeItem('quizPoints');
             localStorage.removeItem('meOne');
             localStorage.removeItem('meTwo');
             localStorage.removeItem('failedQ1');
             localStorage.removeItem('failedQ2');
 
-            // Redirect to first question
             window.location.href = 'computerquiz/q1.html';
+        }
+    }
+
+    // ⭐ NEW FUNCTION: CLEAR GRADE WITH ALERT ⭐
+    function clearGrade() {
+        if (confirm("Are you sure you want to clear your grade? This cannot be undone.")) {
+
+            // Reset displayed values
+            document.getElementById('scoreDisplay').textContent = 0;
+            document.getElementById('percentageDisplay').textContent = '0%';
+            document.getElementById('gradeLetter').textContent = '-';
+            document.getElementById('gradeMessage').textContent = 'Your grade has been cleared.'; 
+            // Remove saved grade
+            localStorage.removeItem('quizPoints');
+
+            alert("Your grade has been successfully cleared!");
         }
     }
 </script>

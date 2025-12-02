@@ -3,89 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q2</title> 
+    <title>Q2</title>
 </head>
 <body>
-    <div id="q2-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
-        <h1>2. The physical parts of a computer are called:</h1>
 
-<b>
-  a. Software<br>
-  b. Hardware<br>
-  c. Memory<br>
-  d. Data
-</b>
+<div id="q2-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+    <h1>2. The physical parts of a computer are called:</h1>
+    <b>
+        a. Software<br>
+        b. Hardware<br>
+        c. Memory<br>
+        d. Data
+    </b>
+    <br><br> 
 
-<br><br>
-
-<div style="width: 60%; margin: auto;">
-    <button id="q2-answer-btn" style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px; color: white; border: none; border-radius: 5px;">
-        Insert your answer
-    </button>
-</div>
-
+    <div style="width: 60%; margin: auto;">
+        <button id="q2-answer-btn"
+            style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px;
+            color: white; border: none; border-radius: 5px;">
+            Insert your answer
+        </button>
+    </div>
 </div>
 
 <br>
 
 <div style="text-align: center;">
     <button 
-        style="
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: .3s ease;
-            text-transform: uppercase;
-        "
+        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+               color: white; border: none; padding: 15px 40px; font-size: 18px;
+               font-weight: bold; border-radius: 50px; cursor: pointer;
+               box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
+               text-transform: uppercase;"
         onclick="window.location.href='q3.html'">
         Next Question →
     </button>
 </div>
- <script>
 
-    /* -------------------------
-       Initialize Points Object
-    --------------------------- */
-    let pointsObj = localStorage.getItem("quizPoints");
-    if (!pointsObj) {
-        pointsObj = { total: 0 };
+
+
+<script>
+// ------------------------- Initialize Points -------------------------
+let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
+ 
+
+// ------------------------- Answer Button -------------------------
+document.getElementById("q2-answer-btn").addEventListener("click", function () {
+
+    const correctAnswer = "b";
+    const userAnswer = prompt("Insert your answer");
+
+    if (!userAnswer) return;
+
+    if (userAnswer.toLowerCase() === correctAnswer) {
+        pointsObj.total += 1;
         localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
+        alert("Correct! +1 point");
     } else {
-        pointsObj = JSON.parse(pointsObj);
+        alert("Wrong answer!");
     }
 
-
-    /* -------------------------
-       Answer Button Logic
-    --------------------------- */
-    const answerBtn = document.getElementById("q2-answer-btn");
-
-    answerBtn.addEventListener("click", function () {
-
-        const correctAnswer = "b";
-        const userAnswer = prompt("Insert your answer");
-
-        if (!userAnswer) return;
-
-        if (userAnswer.toLowerCase() === correctAnswer) {
-
-            // ✅ ALWAYS increment point on success
-            pointsObj.total += 1;
-            localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
- 
-        } 
-        else { 
-        }
-    });
-
+    // Refresh the score on screen
+    document.getElementById("scoreDisplay").innerText = "Score: " + pointsObj.total;
+});
 </script>
-
 
 </body>
 </html>
