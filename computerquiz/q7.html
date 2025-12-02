@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Q6</title>
+  <title>Q7</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -80,19 +80,19 @@
 </div>
 
 <!-- ✅ QUESTION -->
-<div id="q6-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
-  <h1>6. Which of these is used for pointing and clicking?</h1>
+<div id="q7-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+  <h1>7. Which key is used to delete characters to the left of the cursor?</h1>
 
   <b>
-    A. Mouse <br>
-    B. Keyboard <br>
-    C. Printer <br>
-    D. Speaker
+    A. Enter <br>
+    B. Backspace <br>
+    C. Shift <br>
+    D. Spacebar
   </b>
   <br><br>
 
   <div style="width: 60%; margin: auto;">
-    <button id="q6-answer-btn"
+    <button id="q7-answer-btn"
       style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px;
       color: white; border: none; border-radius: 5px;">
       Insert your answer
@@ -107,7 +107,7 @@
       color: white; border: none; padding: 15px 40px; font-size: 18px; font-weight: bold;
       border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
       transition: .3s ease; text-transform: uppercase;"
-      onclick="window.location.href='q7.html'">
+      onclick="window.location.href='q8.html'">
       Next Question →
   </button>
 </div>
@@ -119,7 +119,7 @@
   // ✅ Track answered questions
   let answeredOnce = JSON.parse(localStorage.getItem("answeredOnce")) || {};
 
-  const answerBtn = document.getElementById("q6-answer-btn");
+  const answerBtn = document.getElementById("q7-answer-btn");
 
   // ✅ AUTO-COLOR ANSWERED QUESTIONS
   for (let i = 1; i <= 20; i++) {
@@ -129,8 +129,8 @@
     }
   }
 
-  // ✅ LOCK Q6 IF ALREADY ANSWERED
-  if (answeredOnce["q6"]) {
+  // ✅ LOCK Q7 IF ALREADY ANSWERED
+  if (answeredOnce["q7"]) {
     answerBtn.disabled = true;
     answerBtn.style.backgroundColor = "gray";
   }
@@ -138,28 +138,28 @@
   // ✅ ONE ATTEMPT ONLY
   answerBtn.addEventListener("click", function () {
 
-    if (answeredOnce["q6"]) {
+    if (answeredOnce["q7"]) {
       alert("You already answered this question.");
       return;
     }
 
-    const correctAnswer = "a";
+    const correctAnswer = "b";
     const userAnswer = prompt("Insert your answer");
 
     if (!userAnswer) return;
 
     // ✅ Lock question permanently
-    answeredOnce["q6"] = true;
+    answeredOnce["q7"] = true;
     localStorage.setItem("answeredOnce", JSON.stringify(answeredOnce));
 
     if (userAnswer.toLowerCase() === correctAnswer) {
       pointsObj.total += 1;
       localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-      window.location.href = "q7.html";
+      window.location.href = "q8.html";
     }
 
-    // ✅ Turn number 6 GREEN
-    document.getElementById("btn6").classList.add("answered");
+    // ✅ Turn number 7 GREEN
+    document.getElementById("btn7").classList.add("answered");
 
     // ✅ Disable button
     this.disabled = true;

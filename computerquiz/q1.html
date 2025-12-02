@@ -1,73 +1,170 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q2</title>
+  <meta charset="UTF-8">
+  <title>Q1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      max-width: 400px;
+      margin: 10px auto;
+    }
+
+    .number-box {
+      width: 70px;
+      height: 50px;
+      background: linear-gradient(135deg, #ffffff, #d3d3d3);
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .number-box:hover {
+      transform: scale(1.1);
+    }
+
+    .answered {
+      background: green !important;
+      color: white !important;
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="q2-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
-    <h1>
-1. A computer is best defined as:</h1>
-    <b>    
- a. An electronic device that stores and processes data
- <br>
-b. A machine that cooks food
- <br> 
-c. A device for playing music
- <br> 
-d. None of the above 
-    </b>
-    <br><br> 
+<!-- ✅ PROGRESS TABLE -->
+       <div style="text-align: center; color: green;">
+        <h3>
+    list of question and answered ones 
 
-    <div style="width: 60%; margin: auto;">
-        <button id="q2-answer-btn"
-            style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px;
-            color: white; border: none; border-radius: 5px;">
-            Insert your answer
-        </button>
-    </div>
+        </h3>
+       </div>
+<div class="flex-container"> 
+  <div class="number-box" id="btn1">1</div>
+  <div class="number-box" id="btn2">2</div>
+  <div class="number-box" id="btn3">3</div>
+  <div class="number-box" id="btn4">4</div>
+  <div class="number-box" id="btn5">5</div>
+  <div class="number-box" id="btn6">6</div>
+  <div class="number-box" id="btn7">7</div>
+  <div class="number-box" id="btn8">8</div>
+  <div class="number-box" id="btn9">9</div>
+  <div class="number-box" id="btn10">10</div>
+  <div class="number-box" id="btn11">11</div>
+  <div class="number-box" id="btn12">12</div>
+  <div class="number-box" id="btn13">13</div>
+  <div class="number-box" id="btn14">14</div>
+  <div class="number-box" id="btn15">15</div>
+  <div class="number-box" id="btn16">16</div>
+  <div class="number-box" id="btn17">17</div>
+  <div class="number-box" id="btn18">18</div>
+  <div class="number-box" id="btn19">19</div>
+  <div class="number-box" id="btn20">20</div>
+</div>
+
+<!-- ✅ QUESTION -->
+<div id="q1-container" style="width:100%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 10px; border-radius: 10px; font-size: 12px;">
+  <h1>1. A computer is best defined as:</h1>
+  <b>
+    A. An electronic device that stores and processes data <br>
+    B. A machine that cooks food <br>
+    C. A device for playing music <br>
+    D. None of the above
+  </b>
+  <br><br>
+
+  <div style="width: 60%; margin: auto;">
+    <button id="q1-answer-btn"
+      style="width: 100%; background-color: rgb(4, 136, 141); padding: 10px;
+      color: white; border: none; border-radius: 5px;">
+      Insert your answer
+    </button>
+  </div>
 </div>
 
 <br>
 
 <div style="text-align: center;">
-    <button 
-        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-               color: white; border: none; padding: 15px 40px; font-size: 18px;
-               font-weight: bold; border-radius: 50px; cursor: pointer;
-               box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
-               text-transform: uppercase;"
-        onclick="window.location.href='q3.html'">
-        Next Question →
-    </button>
+  <button
+    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white; border: none; padding: 15px 40px; font-size: 18px;
+    font-weight: bold; border-radius: 50px; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); transition: .3s ease;
+    text-transform: uppercase;"
+    onclick="window.location.href='q2.html'">
+    Next Question →
+  </button>
 </div>
 
-
-
 <script>
-// ------------------------- Initialize Points -------------------------
-let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
- 
+  // ✅ Initialize points
+  let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
 
-// ------------------------- Answer Button -------------------------
-document.getElementById("q2-answer-btn").addEventListener("click", function () {
+  // ✅ Track answered questions
+  let answeredOnce = JSON.parse(localStorage.getItem("answeredOnce")) || {};
+
+  const answerBtn = document.getElementById("q1-answer-btn");
+
+  // ✅ AUTO-COLOR ALREADY ANSWERED
+  for (let i = 1; i <= 20; i++) {
+    if (answeredOnce["q" + i]) {
+      const btn = document.getElementById("btn" + i);
+      if (btn) btn.classList.add("answered");
+    }
+  }
+
+  // ✅ LOCK IF ALREADY ANSWERED
+  if (answeredOnce["q1"]) {
+    answerBtn.disabled = true;
+    answerBtn.style.backgroundColor = "gray";
+  }
+
+  // ✅ ONE ATTEMPT ONLY
+  answerBtn.addEventListener("click", function () {
+
+    if (answeredOnce["q1"]) {
+      alert("You already answered this question.");
+      return;
+    }
 
     const correctAnswer = "a";
     const userAnswer = prompt("Insert your answer");
 
     if (!userAnswer) return;
 
+    // ✅ Save answer permanently
+    answeredOnce["q1"] = true;
+    localStorage.setItem("answeredOnce", JSON.stringify(answeredOnce));
+
     if (userAnswer.toLowerCase() === correctAnswer) {
-        pointsObj.total += 1;
-        localStorage.setItem("quizPoints", JSON.stringify(pointsObj)); 
-    } else { 
+      pointsObj.total += 1;
+      localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
     }
 
-    // Refresh the score on screen
-    document.getElementById("scoreDisplay").innerText = "Score: " + pointsObj.total;
-});
+    // ✅ Turn number 1 GREEN
+    document.getElementById("btn1").classList.add("answered");
+
+    // ✅ Disable button
+    this.disabled = true;
+    this.style.backgroundColor = "gray";
+  });
 </script>
 
 </body>
