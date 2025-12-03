@@ -1,8 +1,8 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Q22</title>
+  <title>Q24</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -131,15 +131,15 @@
 
 <br>
 
-<!-- ✅ QUESTION 22 -->
-<div id="q22-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
-  <h1>22. What is a monitor used for?</h1>
+<!-- ✅ QUESTION 24 -->
+<div id="q24-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
+  <h1>24. What is a keyboard used for?</h1>
 
   <div class="options">
-    <div class="option" data-answer="a">A. To display visual output</div>
-    <div class="option" data-answer="b">B. To store information</div>
-    <div class="option" data-answer="c">C. To print documents</div>
-    <div class="option" data-answer="d">D. To move the cursor</div>
+    <div class="option" data-answer="a">A. For typing data into the computer</div>
+    <div class="option" data-answer="b">B. For displaying pictures</div>
+    <div class="option" data-answer="c">C. For printing documents</div>
+    <div class="option" data-answer="d">D. For storing files</div>
   </div>
 </div>
 
@@ -162,7 +162,7 @@
 
   const options = document.querySelectorAll(".option");
   const correctAnswer = "a";  
-  const questionKey = "q22";
+  const questionKey = "q24";
 
   // Auto color answered grid
   for (let i = 1; i <= 50; i++) {
@@ -208,14 +208,14 @@
         this.classList.add("correct");
         pointsObj.total += 1;
         localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-        setTimeout(() => window.location.href = "q23.html", 800);
+        setTimeout(() => window.location.href = "q25.html", 800);
       } else {
         this.classList.add("wrong");
         document.querySelector(`[data-answer="${correctAnswer}"]`)
           .classList.add("correct");
       }
 
-      document.getElementById("btn22").classList.add("answered");
+      document.getElementById("btn24").classList.add("answered");
       options.forEach(opt => opt.classList.add("disabled"));
     });
   });
