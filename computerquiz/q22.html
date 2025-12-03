@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Q20</title>
+  <title>Q22</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -76,8 +76,8 @@
   <h3>List of questions and answered ones</h3>
 </div> 
 
-
-<div class="flex-container"> 
+ 
+  <div class="flex-container"> 
   <a href="./q1.html"><div class="number-box" id="btn1">1</div></a>
   <a href="./q2.html"><div class="number-box" id="btn2">2</div></a>
   <a href="./q3.html"><div class="number-box" id="btn3">3</div></a>
@@ -129,20 +129,19 @@
   <a href="./q49.html"><div class="number-box" id="btn49">49</div></a>
   <a href="./q50.html"><div class="number-box" id="btn50">50</div></a>
 </div>
-
 <br>
 
-<!-- ✅ QUESTION 20 -->
-<div id="q20-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
-  <h1>20. What is the function of a CPU in a computer?</h1>
+<!-- ✅ QUESTION 22 -->
+<div id="q22-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
+  <h1>22. What does HTTP stand for?</h1>
 
   <div class="options">
-    <div class="option" data-answer="a">A. It stores data and files</div>
-    <div class="option" data-answer="b">B. It controls the entire computer's operation</div>
-    <div class="option" data-answer="c">C. It provides power to the system</div>
-    <div class="option" data-answer="d">D. It displays output on the screen</div>
+    <div class="option" data-answer="a">A. HyperText Transfer Protocol</div>
+    <div class="option" data-answer="b">B. HyperText Type Protocol</div>
+    <div class="option" data-answer="c">C. HighText Transfer Protocol</div>
+    <div class="option" data-answer="d">D. Hyper Transfer Text Protocol</div>
   </div>
-</div> 
+</div>
 
 <br>
 
@@ -162,8 +161,8 @@
   let userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || {};
 
   const options = document.querySelectorAll(".option");
-  const correctAnswer = "b";  // Correct answer for this question
-  const questionKey = "q20";
+  const correctAnswer = "a";
+  const questionKey = "q22";
 
   // ✅ Auto color answered grid
   for (let i = 1; i <= 50; i++) {
@@ -192,7 +191,7 @@
     });
   }
 
-  // ✅ Click handler for answers
+  // ✅ Click handler
   options.forEach(option => {
     option.addEventListener("click", function () {
       if (answeredOnce[questionKey]) return;
@@ -209,17 +208,16 @@
         this.classList.add("correct");
         pointsObj.total += 1;
         localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-        setTimeout(() => window.location.href = "q21.html", 800);  // Dynamic redirect to next question
+        setTimeout(() => window.location.href = "q23.html", 800);
       } else {
         this.classList.add("wrong");
-        document.querySelector(`[data-answer="${correctAnswer}"]`).classList.add("correct");
-      }
-
-      document.getElementById("btn20").classList.add("answered");
+        document.querySelector(`[data-answer="${correctAnswer}"]`)
+          .classList.add("correct");
+      } 
+      document.getElementById("btn22").classList.add("answered");
       options.forEach(opt => opt.classList.add("disabled"));
     });
   });
-</script>
-
+</script> 
 </body>
 </html>
