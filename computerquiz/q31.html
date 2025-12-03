@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Q30</title>
+    <title>Q31</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body { font-family: Arial, sans-serif; background: #f4f6fb; }
@@ -79,14 +79,14 @@
 
 <br>
 
-<!-- QUESTION 30 -->
-<div id="q30-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
-    <h1>30. What is the main function of an operating system?</h1>
+<!-- QUESTION 31 -->
+<div id="q31-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
+    <h1>31. What type of software is used to surf the web?</h1>
     <div class="options">
-        <div class="option" data-answer="a">A. Perform calculations</div>
-        <div class="option" data-answer="b">B. Manage hardware and software resources</div>
-        <div class="option" data-answer="c">C. Browse the internet</div>
-        <div class="option" data-answer="d">D. Create documents</div>
+        <div class="option" data-answer="a">A. Operating system</div>
+        <div class="option" data-answer="b">B. Web browser</div>
+        <div class="option" data-answer="c">C. Database</div>
+        <div class="option" data-answer="d">D. Text editor</div>
     </div>
 </div>
 
@@ -104,8 +104,8 @@
     let userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || {};
 
     const options = document.querySelectorAll(".option");
-    const correctAnswer = "b";  // Manage hardware and software resources
-    const questionKey = "q30";
+    const correctAnswer = "b"; // Web browser
+    const questionKey = "q31";
 
     // Auto color answered grid
     for (let i = 1; i <= 50; i++) {
@@ -147,13 +147,13 @@
                 this.classList.add("correct");
                 pointsObj.total += 1;
                 localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-                setTimeout(() => window.location.href = "q31.html", 800);
+                setTimeout(() => window.location.href = "q32.html", 800);
             } else {
                 this.classList.add("wrong");
                 document.querySelector(`[data-answer="${correctAnswer}"]`).classList.add("correct");
             }
 
-            document.getElementById("btn30").classList.add("answered");
+            document.getElementById("btn31").classList.add("answered");
             options.forEach(opt => opt.classList.add("disabled"));
         });
     });
