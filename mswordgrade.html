@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Grade</title>
+    <title>MS Word Grade</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,14 +24,12 @@
             text-align: center;
             max-width: 500px;
             width: 100%;
-        }
-        
+        } 
         h1 {
             color: #667eea;
             margin-bottom: 30px;
             font-size: 32px;
-        }
-        
+        } 
         .score-display {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -103,7 +101,7 @@
 </head>
 <body>
     <div class="grade-container">
-        <h1>Computer Quiz Results</h1>
+        <h1>MS Word Quiz Results</h1>
         
         <div class="score-display">
             <div class="score-label">Your Score</div>
@@ -126,7 +124,7 @@
 
 <script>
     // Get points from localStorage
-    let pointsObj = localStorage.getItem('quizPoints');
+    let pointsObj = localStorage.getItem('mswordPoints');
     let totalPoints = 0;
 
     if (pointsObj) {
@@ -166,7 +164,7 @@
     document.getElementById('gradeMessage').textContent = gradeMessage;
 
     function resetQuiz() { 
-            window.location.href = 'computerquiz/q1.html'; 
+            window.location.href = 'msword/q1.html'; 
     }
 
     // ⭐ NEW FUNCTION: CLEAR GRADE WITH ALERT ⭐
@@ -179,8 +177,8 @@
             document.getElementById('gradeLetter').textContent = '-';
             document.getElementById('gradeMessage').textContent = 'Your grade has been cleared.'; 
             // Remove saved grade
-            localStorage.removeItem('quizPoints');
-            localStorage.removeItem('answeredOnce'); 
+            localStorage.removeItem('mswordPoints');
+            localStorage.removeItem('mswordAnsweredOnce'); 
             alert("Your grade has been successfully cleared!");
         }
     }
