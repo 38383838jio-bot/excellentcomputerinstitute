@@ -133,7 +133,7 @@
 
 <!-- ✅ QUESTION 22 -->
 <div id="q22-container" style="width:95%; background-color: rgb(138, 138, 138); color: white; margin: auto; padding: 5px; border-radius: 10px; font-size: 12px;">
-  <h1>22. What is a monitor used for?</h1>
+  <h1>23. What is a monitor used for?</h1>
 
   <div class="options">
     <div class="option" data-answer="a">A. To display visual output</div>
@@ -153,8 +153,7 @@
     onclick="window.location.href='../computergrade.html'">
      My Grade
   </button>
-</div>
-
+</div><!-- Only showing JS changes for clarity -->
 <script>
   let pointsObj = JSON.parse(localStorage.getItem("quizPoints")) || { total: 0 };
   let answeredOnce = JSON.parse(localStorage.getItem("answeredOnce")) || {};
@@ -162,31 +161,23 @@
 
   const options = document.querySelectorAll(".option");
   const correctAnswer = "a";  
-  const questionKey = "q22";
+  const questionKey = "q23";
 
   // Auto color answered grid
   for (let i = 1; i <= 50; i++) {
-    if (answeredOnce["q" + i]) {
-      const btn = document.getElementById("btn" + i);
-      if (btn) btn.classList.add("answered");
+    const btn = document.getElementById("btn" + i);
+    if (btn && answeredOnce["q" + i]) {
+      btn.classList.add("answered");
     }
   }
 
   // Restore previous answer
   if (answeredOnce[questionKey]) {
     const savedUserAnswer = userAnswers[questionKey];
-
     options.forEach(opt => {
-      const ans = opt.dataset.answer;
-
-      if (ans === savedUserAnswer) {
-        opt.classList.add(ans === correctAnswer ? "correct" : "wrong");
-      }
-
-      if (ans === correctAnswer) {
-        opt.classList.add("correct");
-      }
-
+      const ans = opt.dataset.answer.trim();
+      if (ans === savedUserAnswer) opt.classList.add(ans === correctAnswer ? "correct" : "wrong");
+      if (ans === correctAnswer) opt.classList.add("correct");
       opt.classList.add("disabled");
     });
   }
@@ -196,7 +187,7 @@
     option.addEventListener("click", function () {
       if (answeredOnce[questionKey]) return;
 
-      const userAnswer = this.dataset.answer;
+      const userAnswer = this.dataset.answer.trim();
 
       answeredOnce[questionKey] = true;
       userAnswers[questionKey] = userAnswer;
@@ -208,18 +199,17 @@
         this.classList.add("correct");
         pointsObj.total += 1;
         localStorage.setItem("quizPoints", JSON.stringify(pointsObj));
-        setTimeout(() => window.location.href = "q23.html", 800);
+        setTimeout(() => window.location.href = "q24.html", 800);
       } else {
         this.classList.add("wrong");
-        document.querySelector(`[data-answer="${correctAnswer}"]`)
-          .classList.add("correct");
-      }
-
+        document.querySelector(`[data-answer="${correctAnswer}"]`).classList.add("correct");
+      } 
       document.getElementById("btn22").classList.add("answered");
       options.forEach(opt => opt.classList.add("disabled"));
     });
   });
 </script>
+
 
 </body>
 </html>
