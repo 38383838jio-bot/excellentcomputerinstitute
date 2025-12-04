@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerPoint Grade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .grade-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+        
+        .score-display {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .score-number {
+            font-size: 72px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .score-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .percentage {
+            font-size: 36px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .grade-letter {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #667eea;
+        }
+        
+        .message {
+            font-size: 18px;
+            color: #666;
+            margin: 20px 0;
+        }
+        
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .reset-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="grade-container">
+        <h1>PowerPoint Quiz Results</h1>
+        
+        <div class="score-display">
+            <div class="score-label">Your Score</div>
+            <div class="score-number" id="scoreDisplay">0</div>
+            <div class="score-label">out of <span id="totalQuestions"> </span> questions</div>
+            <div class="percentage" id="percentageDisplay">0%</div>
+        </div>
+        
+        <div class="grade-letter" id="gradeLetter">-</div>
+        <div class="message" id="gradeMessage">Loading your results...</div>
+        
+        <div class="button-group">
+            <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+            <button class="reset-btn" onclick="resetQuiz()">Quiz</button>
+
+            <!-- NEW CLEAR BUTTON -->
+            <button class="reset-btn" onclick="clearGrade()">Clear My Grade</button>
+        </div>
+    </div>
+
+<script>
+    // Get points from localStorage
+    let pointsObj = localStorage.getItem('powerpointPoints');
+    let totalPoints = 0;
+
+    if (pointsObj) {
+        pointsObj = JSON.parse(pointsObj);
+        totalPoints = pointsObj.total || 0;
+    }
+
+    const totalQuestions = 50; 
+    const percentage = (totalPoints / totalQuestions) * 100;
+
+    // Grade system
+    let gradeLetter = '';
+    let gradeMessage = '';
+
+    if (percentage >= 90) {
+        gradeLetter = 'A';
+        gradeMessage = 'Excellent! Outstanding performance!';
+    } else if (percentage >= 80) {
+        gradeLetter = 'B';
+        gradeMessage = 'Great job! Very good work!';
+    } else if (percentage >= 70) {
+        gradeLetter = 'C';
+        gradeMessage = 'Good effort! Keep practicing!';
+    } else if (percentage >= 60) {
+        gradeLetter = 'D';
+        gradeMessage = 'You passed, but there\'s room for improvement.';
+    } else {
+        gradeLetter = 'F';
+        gradeMessage = 'Keep studying and try again!';
+    }
+
+    // Display results
+    document.getElementById('scoreDisplay').textContent = totalPoints;
+    document.getElementById('totalQuestions').textContent = totalQuestions;
+    document.getElementById('percentageDisplay').textContent = percentage.toFixed(0) + '%';
+    document.getElementById('gradeLetter').textContent = gradeLetter;
+    document.getElementById('gradeMessage').textContent = gradeMessage;
+
+    function resetQuiz() { 
+            window.location.href = 'powerpoint/q1.html'; 
+    }
+
+    // ⭐ NEW FUNCTION: CLEAR GRADE WITH ALERT ⭐
+    function clearGrade() {
+        if (confirm("Are you sure you want to clear your grade? This cannot be undone.")) {
+
+            // Reset displayed values
+            document.getElementById('scoreDisplay').textContent = 0;
+            document.getElementById('percentageDisplay').textContent = '0%';
+            document.getElementById('gradeLetter').textContent = '-';
+            document.getElementById('gradeMessage').textContent = 'Your grade has been cleared.'; 
+            // Remove saved grade
+            localStorage.removeItem('powerpointPoints');
+            localStorage.removeItem('powerpointAnsweredOnce'); 
+            alert("Your grade has been successfully cleared!");
+        }
+    }
+</script>
+
+</body>
+</html>
