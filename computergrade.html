@@ -103,8 +103,7 @@
 </head>
 <body>
     <div class="grade-container">
-        <h1>Computer Quiz Results</h1>
-        
+        <h1>Computer Quiz Results</h1> 
         <div class="score-display">
             <div class="score-label">Your Score</div>
             <div class="score-number" id="scoreDisplay">0</div>
@@ -119,6 +118,7 @@
             <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
             <button class="reset-btn" onclick="resetQuiz()"> Quiz</button>
 
+            <button class="reset-btn" onclick="sub()"> Submit result </button>
             <!-- NEW CLEAR BUTTON -->
             <button class="reset-btn" onclick="clearGrade()">Clear My Grade</button>
         </div>
@@ -168,7 +168,9 @@
     function resetQuiz() { 
             window.location.href = 'computerquiz/q1.html'; 
     }
-
+ function sub() { 
+            window.location.href = 'fowardcomputer.html'; 
+    }
     // ⭐ NEW FUNCTION: CLEAR GRADE WITH ALERT ⭐
     function clearGrade() {
         if (confirm("Are you sure you want to clear your grade? This cannot be undone.")) {

@@ -118,7 +118,8 @@
         <div class="button-group">
             <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
             <button class="reset-btn" onclick="resetQuiz()"> Quiz</button>
-
+ 
+            <button class="reset-btn" onclick="sub()">Submit Result</button>
             <!-- NEW CLEAR BUTTON -->
             <button class="reset-btn" onclick="clearGrade()">Clear My Grade</button>
         </div>
@@ -167,6 +168,9 @@
 
     function resetQuiz() { 
             window.location.href = 'msexcel/q1.html'; 
+    }
+   function sub() { 
+            window.location.href = 'forwardexcel.html'; 
     }
 
     // ⭐ NEW FUNCTION: CLEAR GRADE WITH ALERT ⭐

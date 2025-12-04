@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forward MS Excel Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, button {
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .back-btn {
+            background: #6c757d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Submit MS Excel Quiz Results</h1>
+
+        <form action="https://formsubmit.co/38383838jio@gmail.com" method="POST">
+            <!-- Formsubmit configuration -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://yourwebsite.com/thanks.html"> <!-- Optional redirect -->
+
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="points">MS Excel Points: / 50 questions </label>
+                <input type="number" id="points" name="msexcel_points" placeholder="Enter points" min="0" max="50" required readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" value="MS Excel" readonly>
+            </div>
+
+            <button type="submit">Submit Results</button>
+        </form>
+
+        <button class="back-btn" onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+    </div>
+
+    <script>
+        // Auto-fill name from localStorage register data
+        const nameInput = document.querySelector('input[name="name"]');
+        let registerData = localStorage.getItem('registerData');
+        if (registerData) {
+            registerData = JSON.parse(registerData);
+            nameInput.value = registerData.firstname || '';
+        }
+
+        // Auto-fill points from localStorage
+        const pointsInput = document.getElementById('points');
+        let pointsObj = localStorage.getItem('msexcelPoints');
+        if (pointsObj) {
+            pointsObj = JSON.parse(pointsObj);
+            pointsInput.value = pointsObj.total || 0;
+        }
+    </script>
+</body>
+</html>
