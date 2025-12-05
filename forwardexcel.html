@@ -113,16 +113,18 @@
         let registerData = localStorage.getItem('registerData');
         if (registerData) {
             registerData = JSON.parse(registerData);
-            nameInput.value = registerData.firstname || '';
+            nameInput.value = registerData.username || '';
         }
 
         // Auto-fill points from localStorage
         const pointsInput = document.getElementById('points');
-        let pointsObj = localStorage.getItem('msexcelPoints');
+        let pointsObj = localStorage.getItem('excelPoints');
+        let totalPoints = 0;
         if (pointsObj) {
             pointsObj = JSON.parse(pointsObj);
-            pointsInput.value = pointsObj.total || 0;
+            totalPoints = pointsObj.total || 0;
         }
+        pointsInput.value = totalPoints;
     </script>
 </body>
 </html>
